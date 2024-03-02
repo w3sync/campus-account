@@ -1,0 +1,13 @@
+PORT = 8000
+
+MONGODB_URI = mongodb+srv://gp1611gp:<-password->@account.3dalfyb.mongodb.net
+
+CORS_ORIGIN = *
+
+
+ACCESS_TOKEN_SECRET = myaccsesstoken
+ACCESS_TOKEN_EXPIRY = 1d
+
+
+REFRESH_TOKEN_SECTER = myreftoken
+REFRESH_TOKEN_EXPIRY = 10d
