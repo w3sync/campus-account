@@ -11,7 +11,7 @@ const staffSchema = userSchema.extend({
         qualification : {type:String},
         joiningYear : {type:String},
 })
-
+ 
 
 
 staffSchema.pre('save',async function (next) {

@@ -16,7 +16,7 @@ const userSchema = new Schema({
     username: { type: String, unique: true, required: true, trim: true, lowercase: true },
     password: { type: String, required: true },
     photo: { type: String },
-    sing: { type: String },
+    sign: { type: String },
     refreshToken: { type: String },
 }, { collection: 'users', discriminatorKey: '_type' })
 
