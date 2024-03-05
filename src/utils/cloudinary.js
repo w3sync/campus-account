@@ -1,26 +1,39 @@
-import {v2 as cloudinary} from 'cloudinary';
+import { v2 as cloudinary } from 'cloudinary';
 import fs from "fs"
-          
-cloudinary.config({ 
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
-  api_key: process.env.CLOUDINARY_API_KEY, 
-  api_secret: process.env.CLOUDINARY_API_SECRET 
+import dotenv from "dotenv"
+dotenv.config();
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 
 
-const uplodeOnCloudinary = async (localFilePath) =>{
-    try{
-        if(!localFilePath) return null
-        const response = cloudinary.uploader.upload(localFilePath,{
-            resource_type : "auto"
+const uplodeOnCloudinary = async (localFilePath) => {
+    try {
+        if (!localFilePath) return null
+        const response = await cloudinary.uploader.upload(localFilePath, {
+            resource_type: "auto"
         })
-        console.log("uploded succsessfully ")
+        fs.unlinkSync(localFilePath)
+        console.log("uploded succsessfully")
         return response
-    }catch(err){
-        fs.unlinkSync(localFilePath) 
+    } catch (err) {
+        fs.unlinkSync(localFilePath)
         return null
     }
 }
 
-export {uplodeOnCloudinary}
+const deleteOnCloudinary = async (publicId) => {
+    if(!publicId) return null
+    console.log(publicId)
+    try {
+        cloudinary.api.delete_resources_by_prefix(publicId)
+            
+    } catch (err) {
+        throw err
+    }
+}
+export { uplodeOnCloudinary , deleteOnCloudinary}

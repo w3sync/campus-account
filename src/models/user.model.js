@@ -9,16 +9,16 @@ const userSchema = new Schema({
     dob: { type: Date },
     gender: { type: String, enum: ['MALE', 'FEMALE', 'OTHER'] },
     nationality: { type: String, enum: ['INDIAN', 'OTHER'] },
-    address: { type: String, required: true },
+    address: { type: String,  },
     residentialAddress: { type: String },
-    phone: { type: String, required: true },
-    eamil: { type: String, required: true, trim: true, lowercase: true },
-    username: { type: String, unique: true, required: true, trim: true, lowercase: true },
-    password: { type: String, required: true },
+    phone: { type: String,  },
+    eamil: { type: String, trim: true, lowercase: true },
+    username: { type: String,  trim: true, lowercase: true },
+    password: { type: String },
     photo: { type: String },
     sign: { type: String },
     refreshToken: { type: String },
-}, { collection: 'users', discriminatorKey: '_type' })
+})
 
 
-export { userSchema };
+export {userSchema}

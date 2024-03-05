@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 import { userSchema } from "./user.model.js";
-import { Jwt } from "jsonwebtoken";
+import  jwt  from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 
-const staffSchema = userSchema.extend({
+const staffSchema = userSchema.clone();
+
+staffSchema.add({
         role : {type:String , enum: ["TEACHER","NON-TEACHING","HEAD","TECHNICAL","ACCOUNT","EXAM"]},
         sallery : {type:Number},
         post: {type:String},
