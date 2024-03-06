@@ -13,7 +13,7 @@ const userSchema = new Schema({
     residentialAddress: { type: String },
     phone: { type: String,  },
     eamil: { type: String, trim: true, lowercase: true },
-    username: { type: String,  trim: true, lowercase: true },
+    username: { type: String},
     password: { type: String },
     photo: { type: String },
     sign: { type: String },

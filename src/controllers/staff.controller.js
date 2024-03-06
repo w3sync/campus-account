@@ -3,7 +3,7 @@ import { ApiError } from "../utils/ApiError.js"
 import { deleteOnCloudinary, uplodeOnCloudinary } from "../utils/cloudinary.js";
 import { Staff } from "../models/staff.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-
+import { password } from "../constants.js";
 const registerStaff = asyncHandler(async (req, res) => {
     // get all data of staff
     // check validation
@@ -61,14 +61,15 @@ const registerStaff = asyncHandler(async (req, res) => {
             post,
             qualification,
             joiningYear,
+            password,
             photo: photo?.url || "",
             sign: sign?.url || "",
+            
         })
-
 
         const createdStaff = await Staff.findById(staff._id).select("-password -refreshToken")
         if (!createdStaff) throw new ApiError(500, "Somthing went wron when register a staff")
-
+        
         // End database work
         return res.status(200).json(new ApiResponse(200, createdStaff, "Staff register Successfully !!"))
     } catch (err) {
