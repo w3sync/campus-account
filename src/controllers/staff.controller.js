@@ -9,6 +9,7 @@ import { password } from "../constants.js";
 
 
 const registerStaff = asyncHandler(async (req, res) => {
+    // return res.status(200).json(new ApiResponse(200,req.body,"try"))
     // get all data of staff
     // check validation
     // save on database
@@ -37,6 +38,7 @@ const registerStaff = asyncHandler(async (req, res) => {
 
         //Adress
         permanentAddress,
+        sameAsPresent,
         presentAddress,
 
 
@@ -78,8 +80,8 @@ const registerStaff = asyncHandler(async (req, res) => {
         const staff = await Staff.create({
             // Personal Details 
             firstName,
-            midName,
-            lastName,
+            midName: midName || "",
+            lastName: lastName || "",
             fatherName,
             motherName,
             dob,
@@ -92,8 +94,9 @@ const registerStaff = asyncHandler(async (req, res) => {
 
 
             //Adress
-            permanentAddress,
             presentAddress,
+            sameAsPresent,
+            permanentAddress,
 
             // Sesion Details
             role,
@@ -118,7 +121,7 @@ const registerStaff = asyncHandler(async (req, res) => {
         if (!createdStaff) throw new ApiError(500, "Somthing went wron when register a staff")
 
         // End database work
-        return res.status(200).json(new ApiResponse(200, createdStaff, "Staff register Successfully !!"))
+        return res.status(200).json(new ApiResponse(201, createdStaff, "Staff register Successfully !!"))
     } catch (err) {
         deleteOnCloudinary(photo?.public_id)
         deleteOnCloudinary(sign?.public_id)

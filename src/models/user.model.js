@@ -38,7 +38,7 @@ const userSchema = new Schema({
     // Adress details
     presentAddress: addressSchema ,
     sameAsPresent : {type:Boolean, required:true},
-    permanentAddress: { type: addressSchema, required:function(){return this.sameAsPresent}, default: function(){return this.presentAddress}},
+    permanentAddress: { type: addressSchema, required:true, default: function(){return this.sameAsPresent?this.presentAddress:null}},
 
 
     // Image content
