@@ -6,14 +6,33 @@ import { usernamePrifix } from "../constants.js";
 import { ApiError } from "../utils/ApiError.js";
 
 
+const acadmicData = mongoose.Schema({
+    examinationName : {type:String , required:true},
+    bordName : {type:String , required:true},
+    yearOfPassing : {type:String, required:true},
+    rollNumber : {type:Number, required: true},
+    gradingSystem: {type: String,required:true,enum: ['percentage', 'letterGrade']},
+    grade: {type:String , required: function(){this.gradingSystem === 'latterGrade'? true:false}},
+    perentage : {type:Number,required: function(){this.gradingSystem === 'percentage'? true:false}},
+    totalMarks : {type:Number},
+    obtainMarks: {type:Number},
+
+},{_id:false})
+
 const staffSchema = userSchema.clone();
 
 staffSchema.add({
-        role : {type:String , enum: ["TEACHER","NON-TEACHING","HEAD","TECHNICAL","ACCOUNT","EXAM"]},
+        // Sesion Details
+        role : {type:String , enum: ["TEACHER","NON-TEACHING","HEAD","TECHNICAL","ACCOUNT","EXAM"], required:true},
+        post: {type:String , required: true},
         sallery : {type:Number},
-        post: {type:String},
-        qualification : {type:String},
-        joiningYear : {type:String},
+        joiningYear : {type:String, required:true},
+
+
+        //acadmicData
+        qualification : [acadmicData],
+
+
 })
  
 
