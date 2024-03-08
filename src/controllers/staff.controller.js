@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler.js"
 import { ApiError } from "../utils/ApiError.js"
-import { deleteOnCloudinary, uplodeOnCloudinary } from "../utils/cloudinary.js";
+import { deleteOnCloudinary, deleteOnCloudinaryByUrl, uplodeOnCloudinary } from "../utils/cloudinary.js";
 import { Staff } from "../models/staff.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { password } from "../constants.js";
@@ -149,7 +149,6 @@ const loginStaff = asyncHandler(async (req, res) => {
     // password check 
     // access and refresh token
     const { username, password } = req.body
-    console.log(username, password, "thisfield")
     if (!username || !password) throw new ApiError(400, "Username or Password is Required")
     const staff = await Staff.findOne({ username })
     if (!staff) throw new ApiError(404, "User Dose Not Exist !");
@@ -189,7 +188,7 @@ const logoutStaff = asyncHandler(async (req, res) => {
 
 
 const refreshAccessToken = asyncHandler(async (req, res) => {
-    console.log("token",req.cookies.refreshToken)
+    console.log("token", req.cookies.refreshToken)
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
 
     if (!incomingRefreshToken) throw new ApiError(401, "UnAuthorised Token ")
@@ -199,7 +198,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         const staff = await Staff.findById(decodedToken?._id)
         if (!staff) throw new ApiError(401, "Invalid refresh token")
 
-        console.log(incomingRefreshToken,"\n",staff.refreshToken)
+        console.log(incomingRefreshToken, "\n", staff.refreshToken)
         if (incomingRefreshToken !== staff.refreshToken) throw new ApiError(401, "Refresh token is expired or used")
 
         const options = {
@@ -216,31 +215,71 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
             .json(new ApiResponse(200, { accessToken, refreshToken }, "AccessToken refreshed"))
 
     } catch (error) {
-        throw new ApiError(400,error.message|| "Invalid refresh Token .")
+        throw new ApiError(400, error.message || "Invalid refresh Token .")
     }
 
 })
 
-const changeCurrentPassword = asyncHandler(async (req,res)=>{
-    const {oldPassword, newPassword} = req.body
-    if(!newPassword) throw new ApiError(400,"newPassword are required");
+const changeCurrentPassword = asyncHandler(async (req, res) => {
+    const { oldPassword, newPassword } = req.body
+    if (!newPassword) throw new ApiError(400, "newPassword are required");
     const staff = await Staff.findById(req.staff?._id)
     const isPasswordCorrect = await staff.isPasswordCorrect(oldPassword);
-    if(!isPasswordCorrect) new ApiError(400,"Invalid Old password");
+    if (!isPasswordCorrect) new ApiError(400, "Invalid Old password");
     staff.password = newPassword;
-    await staff.save({validateBeforeSave:false});
+    await staff.save({ validateBeforeSave: false });
+    return res
+        .status(200)
+        .json(new ApiResponse(200, {}, "Password Changed scucessfully !"))
+
+})
+
+
+const getCurrentStaff = asyncHandler(async (req, res) => {
+    return res
+        .status(200)
+        .json(new ApiResponse(200, req.staff, "current user fetcched successfully "))
+
+})
+
+
+const updateStaffPhoto = asyncHandler(async (req, res) => {
+    const staffPhotoLocalPath = req.file?.path
+    if (!staffPhotoLocalPath) throw new ApiError(400, "Photo File is Missing ")
+    const photo = await uplodeOnCloudinary(staffPhotoLocalPath);
+    if (!photo?.url) throw new ApiError(400, "error on uploding Image");
+    const staff = await Staff.findById(req.staff?._id).select("-password -refreshToken");
+    if(!staff) throw new ApiError(500,"Error while finding staff for update photo")
+    await deleteOnCloudinaryByUrl(staff.photo)
+    staff.photo = photo?.url;
+    
+    const updatedStaff = await staff.save()// await Staff.findById(req.staff?._id).select();
+    
     return res
     .status(200)
-    .json(new ApiResponse(200,{},"Password Changed scucessfully !"))
+    .json(new ApiResponse(200,updatedStaff,"Photo uploded successfull"))
 
 })
 
 
 
+const updateStaffSign = asyncHandler(async (req, res) => {
+    const staffSignLocalPath = req.file?.path
+    if (!staffSignLocalPath) throw new ApiError(400, "Sign File is Missing ")
+    const sign = await uplodeOnCloudinary(staffSignLocalPath);
+    if (!sign?.url) throw new ApiError(400, "error on uploding Image");
+    const staff = await Staff.findById(req.staff?._id).select("-password -refreshToken");
+    if(!staff) throw new ApiError(500,"Error while finding staff for update sign")
+    await deleteOnCloudinaryByUrl(staff.sign)
+    staff.sign = sign?.url;
+    
+    const updatedStaff = await staff.save()// await Staff.findById(req.staff?._id).select();
+    
+    return res
+    .status(200)
+    .json(new ApiResponse(200,updatedStaff,"sign uploded successfull"))
 
-
-
-
+})
 
 
 
@@ -252,4 +291,7 @@ export {
     logoutStaff,
     refreshAccessToken,
     changeCurrentPassword,
+    getCurrentStaff,
+    updateStaffPhoto,
+    updateStaffSign,
 }

@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
+import {extractPublicId} from 'cloudinary-build-url'
 import fs from "fs"
 import dotenv from "dotenv"
 dotenv.config();
@@ -28,7 +29,6 @@ const uplodeOnCloudinary = async (localFilePath) => {
 
 const deleteOnCloudinary = async (publicId) => {
     if(!publicId) return null
-    console.log(publicId)
     try {
         cloudinary.api.delete_resources_by_prefix(publicId)
             
@@ -36,4 +36,9 @@ const deleteOnCloudinary = async (publicId) => {
         throw err
     }
 }
-export { uplodeOnCloudinary , deleteOnCloudinary}
+
+const deleteOnCloudinaryByUrl = async (uri)=>{
+    const publicId = extractPublicId(uri);
+    await deleteOnCloudinary(publicId);
+}
+export { uplodeOnCloudinary , deleteOnCloudinary , deleteOnCloudinaryByUrl}

@@ -44,9 +44,7 @@ staffSchema.pre('save',async function (next) {
 })
 
 
-staffSchema.methods.isPasswordCorrect = async function (password) {
-    return await bcrypt.compare(password,this.password);
-}
+
 
 const checkUsername = async function(username){
     const userExist = await Staff.findOne({username:username},"username")
@@ -75,6 +73,16 @@ staffSchema.pre('save',async function(next){
     console.log({"user":this.username})
     next();
 })
+
+
+
+
+
+
+
+staffSchema.methods.isPasswordCorrect = async function (password) {
+    return await bcrypt.compare(password,this.password);
+}
 
 staffSchema.methods.genrateAccessToken = async function() {
     return await jwt.sign(
