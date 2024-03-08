@@ -4,9 +4,22 @@ import { deleteOnCloudinary, uplodeOnCloudinary } from "../utils/cloudinary.js";
 import { Staff } from "../models/staff.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { password } from "../constants.js";
+import jwt from "jsonwebtoken";
 
+const genrateAccessAndRefereshToken = async (userId) => {
+    try {
+        const staff = await Staff.findById(userId);
+        const accessToken = await staff.genrateAccessToken();
+        const refreshToken = await staff.genrateRefreshToken();
 
+        staff.refreshToken = refreshToken;
+        await staff.save({ validateBeforeSave: false });
+        return { accessToken, refreshToken }
 
+    } catch (err) {
+        throw new ApiError(500, "Somthing went wrong while generating referesh and access token")
+    }
+}
 
 const registerStaff = asyncHandler(async (req, res) => {
     // return res.status(200).json(new ApiResponse(200,req.body,"try"))
@@ -130,7 +143,88 @@ const registerStaff = asyncHandler(async (req, res) => {
 })
 
 const loginStaff = asyncHandler(async (req, res) => {
+    // get Data 
+    // check username and password 
+    //find user
+    // password check 
+    // access and refresh token
+    const { username, password } = req.body
+    console.log(username, password, "thisfield")
+    if (!username || !password) throw new ApiError(400, "Username or Password is Required")
+    const staff = await Staff.findOne({ username })
+    if (!staff) throw new ApiError(404, "User Dose Not Exist !");
+    const isPassValid = await staff.isPasswordCorrect(password);
+    if (!isPassValid) throw new ApiError(401, "Invalid user credentials")
+    const { accessToken, refreshToken } = await genrateAccessAndRefereshToken(staff._id);
+    const loggedInStaff = await Staff.findById(staff._id).select("-password -refreshToken")
 
-    return res.status(200).json(new ApiResponse(200, {}, "login staff"))
+    const options = {
+        httpOnly: true,
+        secure: true,
+    }
+
+    return res
+        .status(200)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
+        .json(new ApiResponse(200, { staff: loggedInStaff, accessToken, refreshToken }, "Staff logged In successfull !!!"))
+
 })
-export { registerStaff, loginStaff }
+
+
+const logoutStaff = asyncHandler(async (req, res) => {
+    await Staff.findByIdAndUpdate(req.staff._id, { $set: { refreshToken: undefined } }, { new: true })
+    const options = {
+        httpOnly: true,
+        secure: true,
+    }
+
+    return res
+        .status(200)
+        .cookie("accessToken", options)
+        .cookie("refreshToken", options)
+        .json(new ApiResponse(200, {}, "User logged out"))
+
+})
+
+
+const refreshAccessToken = asyncHandler(async (req, res) => {
+    console.log("token",req.cookies.refreshToken)
+    const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
+
+    if (!incomingRefreshToken) throw new ApiError(401, "UnAuthorised Token ")
+    try {
+
+        const decodedToken = await jwt.verify(incomingRefreshToken, process.env.REFRESH_TOKEN_SECRET)
+        const staff = await Staff.findById(decodedToken?._id)
+        if (!staff) throw new ApiError(401, "Invalid refresh token")
+
+        console.log(incomingRefreshToken,"\n",staff.refreshToken)
+        if (incomingRefreshToken !== staff.refreshToken) throw new ApiError(401, "Refresh token is expired or used")
+
+        const options = {
+            httpOnly: true,
+            secure: true
+        }
+
+        const { accessToken, refreshToken } = await genrateAccessAndRefereshToken(staff._id);
+
+        return res
+            .status(200)
+            .cookie("accessToken", accessToken)
+            .cookie("refreshToken", refreshToken)
+            .json(new ApiResponse(200, { accessToken, refreshToken }, "AccessToken refreshed"))
+
+    } catch (error) {
+        throw new ApiError(400,error.message|| "Invalid refresh Token .")
+    }
+
+})
+
+
+export {
+    registerStaff,
+    loginStaff,
+    logoutStaff,
+    refreshAccessToken,
+}

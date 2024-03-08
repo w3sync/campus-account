@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { loginStaff, registerStaff } from "../controllers/staff.controller.js";
+import { loginStaff, logoutStaff, refreshAccessToken, registerStaff } from "../controllers/staff.controller.js";
 import {upload} from "../middlewares/multer.middleware.js"
+import { verifyJWT } from "../middlewares/staffAuth.middleware.js";
 
 const router = Router();
 
@@ -14,8 +15,16 @@ router.route("/register").post(
         name: "sign",
         maxCount: 1
     }
-]),registerStaff)
+]),registerStaff);
 
-router.route("/login").post(loginStaff)
+router.route("/login").post(loginStaff);
+
+
+
+//secured routes
+router.route("/logout").post(verifyJWT,logoutStaff);
+router.route("/refresh-token").post(refreshAccessToken);
+
+
 
 export default router;
