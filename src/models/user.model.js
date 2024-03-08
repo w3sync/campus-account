@@ -25,8 +25,8 @@ const userSchema = new Schema({
     dob: { type: Date , required:true },
     gender: { type: String, enum: ['MALE', 'FEMALE', 'OTHER'] ,required:true },
     nationality: { type: String, enum: ['INDIAN', 'OTHER'] ,required:true },
-    pwd: {type:Boolean},
-    pwd_data: {type: String , required: function(){return this.pwd}},
+    pwd: {type:Boolean ,require:true},
+    pwdData: {type: String , required: function(){return this.pwd}},
 
     // Contect Details 
     username: { type: String},
@@ -47,7 +47,7 @@ const userSchema = new Schema({
 
     //Token section
     refreshToken: { type: String },
-})
+},{timestamps:true})
 
 
 export {userSchema}

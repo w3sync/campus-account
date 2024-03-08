@@ -44,6 +44,8 @@ const registerStaff = asyncHandler(async (req, res) => {
         dob,
         gender,
         nationality,
+        pdw,
+        pwdData,
 
         //Contect details
         phone,
@@ -100,6 +102,8 @@ const registerStaff = asyncHandler(async (req, res) => {
             dob,
             gender,
             nationality,
+            pwd,
+            pwdData,
 
             //Contect details
             phone,
