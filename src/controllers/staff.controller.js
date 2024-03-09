@@ -44,7 +44,7 @@ const registerStaff = asyncHandler(async (req, res) => {
         dob,
         gender,
         nationality,
-        pdw,
+        pwd,
         pwdData,
 
         //Contect details
