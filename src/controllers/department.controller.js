@@ -43,6 +43,26 @@ const createDepartment = asyncHandler(async (req,res) =>{
 })
 
 
+const updateDepartmentDesc = asyncHandler(async (req,res)=>{
+    // get data from req
+    // update data on database
+    // return new data 
+    const {
+        departmentID,
+        desc
+    } = req.body
+
+    if(!desc) throw new ApiError(499,"All fields are required !!");
+
+    const department = await Department.findByIdAndUpdate(departmentID,{desc},{new:true})
+    if(!department) throw new ApiError(404,"Department not found ");
+    return res
+        .status(200)
+        .json(new ApiResponse(200,{department},"Department desc updated Successfully !!"))
+})
 
 
-export {createDepartment}
+export {
+    createDepartment,
+    updateDepartmentDesc
+}

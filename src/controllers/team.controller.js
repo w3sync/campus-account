@@ -26,7 +26,7 @@ const createTeam = asyncHandler(async (req,res)=>{
 
     const isTeamExist = await Team.findOne({$and:[{member},{department}]});
     if(isTeamExist) throw new ApiError(409,"Staff Alredy Added on this Department");
-    
+
     try{
         const team = await Team.create({
             member,
@@ -41,8 +41,27 @@ const createTeam = asyncHandler(async (req,res)=>{
 })
  
 
+const removeTeam = asyncHandler(async (req,res)=>{
+    // get data from req
+    // remove from database
+    // send success msg
+
+    const {
+        member,
+        department
+    } = req.body
+
+    if(!(member && department)) throw new ApiError(499,"all Feilds are required !!")
+
+    const team = await Team.findOneAndDelete({$and:[{member},{department}]});
+    if(!team) throw new ApiError(404,"Invailid Credential !!")
+    return res
+    .status(200)
+    .json(new ApiResponse(202,{},"Staff removed Successfully !!"))
+})
 
 
 export{
-    createTeam
+    createTeam,
+    removeTeam
 }
