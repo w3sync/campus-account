@@ -2,10 +2,18 @@ import { Router } from "express";
 import { changeCurrentPassword, loginStaff, logoutStaff, refreshAccessToken, registerStaff, updateStaffPhoto, updateStaffSign } from "../controllers/staff.controller.js";
 import {upload} from "../middlewares/multer.middleware.js"
 import { verifyJWT } from "../middlewares/staffAuth.middleware.js";
+import { verifyAdmin } from "../middlewares/adminAuth.middlewares.js";
 
 const router = Router();
 
-router.route("/register").post(
+
+// unsecured routes 
+router.route("/login").post(loginStaff);
+
+
+
+// secured routes by Admin
+router.route("/register").post(verifyJWT,verifyAdmin,
     upload.fields([
     {
         name: "photo",
@@ -17,7 +25,6 @@ router.route("/register").post(
     }
 ]),registerStaff);
 
-router.route("/login").post(loginStaff);
 
 
 

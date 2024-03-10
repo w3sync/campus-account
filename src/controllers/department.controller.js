@@ -62,7 +62,44 @@ const updateDepartmentDesc = asyncHandler(async (req,res)=>{
 })
 
 
+const changeDepartmentName = asyncHandler(async (req,res)=>{
+    const {
+        departmentID,
+        newName
+    } = req.body
+
+    if(!newName) throw new ApiError(499,"All fields are required !!")
+
+    const department = await Department.findByIdAndUpdate(departmentID,{name:newName},{new:true});
+    if(!department) throw new ApiError(404,"Department not found !!");
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200,{department},"Department Name Changed Successfully !!"));
+})
+
+
+const chaneDepartmentHead = asyncHandler(async (req,res)=>{
+    const {
+        departmentID,
+        head
+    } = req.body;
+    if(!head) throw new ApiError(499,"All fields are required ")
+
+    const staff = await Staff.findById(head);
+    if(!staff) throw new ApiError(404,"Staff dose not exist !!");
+
+    const  department = await Department.findByIdAndUpdate(departmentID,{head:head},{new:true})
+    if(!department) throw new ApiError(404,"Department Not found !!");
+    
+    return res
+    .status(200)
+    .json(new ApiResponse(200,{department},"Head of department changed successfully !!"))
+})
+
 export {
     createDepartment,
-    updateDepartmentDesc
+    updateDepartmentDesc,
+    changeDepartmentName,
+    chaneDepartmentHead
 }
