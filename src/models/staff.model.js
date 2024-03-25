@@ -113,3 +113,4 @@ staffSchema.methods.genrateRefreshToken = async function() {
 
 
 export  const  Staff = mongoose.model("staff",staffSchema);
+export { acadmicData};
