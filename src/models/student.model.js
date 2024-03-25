@@ -12,7 +12,7 @@ const tcSchema = new Schema({
     tcNumber : {type:String, required:true},
     admissionNumber : {type:String},
     date : {type:Date,required:true}
-})
+},{_id:false})
 
 
 const migrationSchema = new Schema({
@@ -20,7 +20,7 @@ const migrationSchema = new Schema({
     migrationNumber : {type:String, required:true},
     rollNumber : {type:String},
     date : {type:Date,required:true}
-})
+},{_id:false})
 
 
 const studentSchema = userSchema.clone();

@@ -19,7 +19,7 @@ const genrateAccessAndRefereshToken = async (userId) => {
     } catch (err) {
         throw new ApiError(500, "Somthing went wrong while generating referesh and access token")
     }
-}
+} 
 
 const registerStaff = asyncHandler(async (req, res) => {
     // return res.status(200).json(new ApiResponse(200,req.body,"try"))
@@ -214,8 +214,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
         return res
             .status(200)
-            .cookie("accessToken", accessToken)
-            .cookie("refreshToken", refreshToken)
+            .cookie("accessToken", accessToken,options)
+            .cookie("refreshToken", refreshToken,options)
             .json(new ApiResponse(200, { accessToken, refreshToken }, "AccessToken refreshed"))
 
     } catch (error) {

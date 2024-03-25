@@ -10,10 +10,10 @@ const router = Router();
 
 
 //secured route 
-router.route("/create-department").post(verifyJWT,verifyAdmin,createDepartment);
-router.route("/update-department-desc").post( verifyJWT, verifyForDepartmentHead, updateDepartmentDesc);
-router.route("/change-department-head").post( verifyJWT, verifyAdmin, chaneDepartmentHead);
-router.route("/change-department-name").post( verifyJWT, verifyAdmin, changeDepartmentName);
+router.route("/create-department").post(createDepartment);
+router.route("/update-department-desc").post(updateDepartmentDesc);
+router.route("/change-department-head").post(  chaneDepartmentHead);
+router.route("/change-department-name").post( changeDepartmentName);
 
 
  

@@ -13,7 +13,7 @@ router.route("/login").post(loginStaff);
 
 
 // secured routes by Admin
-router.route("/register").post(verifyJWT,verifyAdmin,
+router.route("/register").post(
     upload.fields([
     {
         name: "photo",

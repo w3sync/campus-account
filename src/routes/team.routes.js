@@ -7,8 +7,8 @@ const router = Router();
 
 
 
-router.route("/add-member").post( verifyJWT, verifyAdmin,  createTeam);
-router.route("/remove-member").post( verifyJWT, verifyAdmin, removeTeam);
+router.route("/add-member").post(  createTeam);
+router.route("/remove-member").post(  removeTeam);
 
 
 
