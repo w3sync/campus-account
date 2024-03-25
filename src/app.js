@@ -21,16 +21,17 @@ app.use(cookieParser())
 import staffRouter from "./routes/staff.routes.js"
 import departmentRouter from "./routes/department.routes.js"
 import teamRouter from "./routes/team.routes.js"
-
-
+import classRouter from "./routes/class.routes.js"
+import joinClassRouter from "./routes/joinClass.routes.js"
 
 
 //route decleration 
 
-app.use("/api/v1/staff",staffRouter)
-app.use("/api/v1/department",departmentRouter)
-app.use("/api/v1/team",teamRouter)
-
+app.use("/api/v1/staff",staffRouter);
+app.use("/api/v1/department",departmentRouter);
+app.use("/api/v1/team",teamRouter);
+app.use("/api/v1/class",classRouter);
+app.use("/api/v1/join-class",joinClassRouter);
 
 
 

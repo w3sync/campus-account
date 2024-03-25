@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 
 const teamSchema = new mongoose.Schema({
-    class: {
+    classId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'class',
         required:true,

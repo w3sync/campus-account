@@ -16,6 +16,6 @@ router.route("/change-department-head").post( verifyJWT, verifyAdmin, chaneDepar
 router.route("/change-department-name").post( verifyJWT, verifyAdmin, changeDepartmentName);
 
 
-
+ 
 
 export default router;

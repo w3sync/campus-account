@@ -1,0 +1,7 @@
+name,
+class,
+sec,
+year,
+isActiv,
+desc,
+classTeacher,
