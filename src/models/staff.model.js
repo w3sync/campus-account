@@ -41,7 +41,7 @@ staffSchema.pre('save',async function (next) {
     if(! this.isModified("password")) return next();
     this.password = await bcrypt.hash(this.password,10);
     next();
-})
+}) 
 
 
 
@@ -90,7 +90,6 @@ staffSchema.methods.genrateAccessToken = async function() {
             _id: this._id,
             username : this.username,
             email : this.email,
-            role : this.role
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
