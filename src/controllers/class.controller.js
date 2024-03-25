@@ -18,11 +18,11 @@ const createClass = asyncHandler(async (req,res) =>{
         classNum,
         sec,
         year,
-        isActiv,
+        isActive,
         desc,
         classTeacher,
     } = req.body
-
+    console.log("this run",req.body)
     if(!(name && classNum && sec && year )) throw new ApiError(499,"All Field is required !!")
 
     const isClassNameExist = await Myclass.findOne({name}).select("_id");
@@ -79,6 +79,9 @@ const changeClassName = asyncHandler(async (req,res)=>{
     } = req.body
 
     if(!newName) throw new ApiError(499,"All fields are required !!")
+
+    const isClassNameExist = await Myclass.findOne({name:newName}).select("_id");
+    if(isClassNameExist) throw new ApiError(409,"ClassName Alredy exist");
 
     const myclass = await Myclass.findByIdAndUpdate(classID,{name:newName},{new:true});
     if(!myclass) throw new ApiError(404,"Class not found !!");
