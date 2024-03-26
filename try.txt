@@ -1,4 +1,9 @@
-fromAnotherSchool,
-previosAcedmicData,
-tc,
-migration,
+{
+    "name":"Demo",
+    "classNum":"0",
+    "sec":"A",
+    "year":"2023",
+    "isActive":"true",
+    "desc":"demo for testig",
+    "classTeacher": "65edac8d10d37656e406f75c"
+}

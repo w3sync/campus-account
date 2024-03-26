@@ -21,7 +21,7 @@ const migrationSchema = new Schema({
     rollNumber : {type:String},
     date : {type:Date,required:true}
 },{_id:false})
-
+ 
 
 const studentSchema = userSchema.clone();
 
@@ -44,6 +44,7 @@ studentSchema.add({
 
 
 studentSchema.pre('save', async function (next) {
+    if(! this.isNew) return next();
     const lastStudent = await Student.findOne().sort({ admissionNumber: -1 });
     let newAdmissionNumber;
     if (!lastStudent) newAdmissionNumber = 1;
