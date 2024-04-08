@@ -97,9 +97,50 @@ const chaneDepartmentHead = asyncHandler(async (req,res)=>{
     .json(new ApiResponse(200,{department},"Head of department changed successfully !!"))
 })
 
+const getAllDepartment = asyncHandler(async (_,res)=>{
+    const department =  await Department.aggregate([
+        {
+            $lookup: {
+                from:"staffs",
+                localField: "head",
+                foreignField:"_id",
+                as: "headName",
+            }
+        },
+        {
+            $addFields: {
+                "headFullName": {
+                    $concat:[
+                        {$first:"$headName.firstName"},
+                        " ",
+                        {$first:"$headName.midName"},
+                        " ",
+                        {$last:"$headName.lastName"},
+                    ]
+                }
+              }
+           
+        },
+        {
+            $project: {
+                "_id":1,
+                "name":1,
+                "headFullName":1
+            }
+        },
+      
+
+    ])
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200,department,"get all department"));
+})
+
 export {
     createDepartment,
     updateDepartmentDesc,
     changeDepartmentName,
-    chaneDepartmentHead
+    chaneDepartmentHead,
+    getAllDepartment,
 }

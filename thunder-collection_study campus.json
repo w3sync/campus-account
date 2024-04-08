@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "study campus",
-    "dateExported": "2024-03-10T15:59:56.245Z",
+    "dateExported": "2024-03-26T08:01:51.026Z",
     "version": "1.1",
     "folders": [
         {
@@ -24,94 +24,30 @@
             "containerId": "",
             "created": "2024-03-09T19:24:51.819Z",
             "sortNum": 30000
+        },
+        {
+            "_id": "24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7",
+            "name": "class",
+            "containerId": "",
+            "created": "2024-03-25T18:53:56.496Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "8d94b9b8-31e6-41a3-b52f-10b723636973",
+            "name": "student",
+            "containerId": "",
+            "created": "2024-03-26T07:12:11.280Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "9b4ff644-ebd4-4576-ae94-154d3f66bc44",
+            "name": "join-class",
+            "containerId": "",
+            "created": "2024-03-26T07:51:48.943Z",
+            "sortNum": 60000
         }
     ],
     "requests": [
-        {
-            "_id": "8493c3ac-bdb4-4d81-a651-d33da1074f65",
-            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
-            "containerId": "",
-            "name": "staff regiser",
-            "url": "http://localhost:8000/api/v1/staff/register",
-            "method": "POST",
-            "sortNum": 10000,
-            "created": "2024-03-03T17:57:54.380Z",
-            "modified": "2024-03-06T15:23:39.714Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "formdata",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "firstName",
-                        "value": "fst"
-                    },
-                    {
-                        "name": "lastName",
-                        "value": "lst"
-                    },
-                    {
-                        "name": "dob",
-                        "value": "2002-11-16"
-                    },
-                    {
-                        "name": "gender",
-                        "value": "MALE"
-                    },
-                    {
-                        "name": "role",
-                        "value": "TEACHER"
-                    },
-                    {
-                        "name": "post",
-                        "value": "dev"
-                    },
-                    {
-                        "name": "nationality",
-                        "value": "INDIAN"
-                    },
-                    {
-                        "name": "address",
-                        "value": "dhanagar"
-                    },
-                    {
-                        "name": "residentialAddress",
-                        "value": "dhanagar"
-                    },
-                    {
-                        "name": "phone",
-                        "value": "6260702385"
-                    },
-                    {
-                        "name": "eamil",
-                        "value": "gp1611@gmail.com"
-                    },
-                    {
-                        "name": "sallery",
-                        "value": "00"
-                    },
-                    {
-                        "name": "midName",
-                        "value": "mid"
-                    }
-                ],
-                "files": [
-                    {
-                        "name": "photo",
-                        "value": "c:\\Users\\DELL\\Pictures\\Saved Pictures\\photo.jpg",
-                        "isDisabled": true
-                    },
-                    {
-                        "name": "sign",
-                        "value": "c:\\Users\\DELL\\Pictures\\Saved Pictures\\ph (3).jpg",
-                        "isDisabled": true
-                    }
-                ]
-            },
-            "reqType": "post",
-            "tests": []
-        },
         {
             "_id": "fe0ad16b-0eb5-4f00-9565-8905f31ee025",
             "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
@@ -647,6 +583,456 @@
                 "raw": "{\n  \"departmentID\": \"65ecc12e9a23e57d8f930b47\",\n  \"head\": \"65eaf5a27b6979182d229786\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "7d84aab3-a7a7-4d93-aae3-24b08f879ade",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7",
+            "name": "create class",
+            "url": "http://localhost:8000/api/v1/class/create-class",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2024-03-25T18:54:15.597Z",
+            "modified": "2024-03-25T19:18:56.673Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"name\":\"Demo4\",\r\n    \"classNum\":\"0\",\r\n    \"sec\":\"A\",\r\n    \"year\":\"2023\",\r\n    \"isActive\":\"true\",\r\n    \"desc\":\"demo for testig\",\r\n    \"classTeacher\": \"65edac8d10d37656e406f75c\"\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "834b626f-5363-443f-9cca-a47e8ad15fc5",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7",
+            "name": "change-class-name",
+            "url": "http://localhost:8000/api/v1/class/change-class-name",
+            "method": "POST",
+            "sortNum": 180000,
+            "created": "2024-03-25T18:56:25.361Z",
+            "modified": "2024-03-25T19:14:38.498Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"classID\":\"6601cbe93f23f0edec86c7b1\",\r\n    \"newName\":\"Demo3\"\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a00ac828-425f-4534-856c-7503187cf53e",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7",
+            "name": "update-class-desc",
+            "url": "http://localhost:8000/api/v1/class/update-class-desc",
+            "method": "POST",
+            "sortNum": 190000,
+            "created": "2024-03-25T18:57:27.692Z",
+            "modified": "2024-03-25T19:15:22.887Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"classID\":\"6601cbe93f23f0edec86c7b1\",\r\n    \"desc\": \"demo for update desc testig\"\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "754dc803-0c38-4815-915b-95e45749bb00",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7",
+            "name": "change-class-teacher",
+            "url": "http://localhost:8000/api/v1/class/change-class-teacher",
+            "method": "POST",
+            "sortNum": 200000,
+            "created": "2024-03-25T18:58:09.331Z",
+            "modified": "2024-03-25T19:17:53.999Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"classID\":\"6601cbe93f23f0edec86c7b1\",\n    \"classTeacher\": \"65edac8d10d37656e406f75c\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d2ddaa77-f7b7-485f-88ea-ad52423ac103",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7",
+            "name": "deactivet-class",
+            "url": "http://localhost:8000/api/v1/class/deactivet-class",
+            "method": "POST",
+            "sortNum": 210000,
+            "created": "2024-03-25T18:58:37.063Z",
+            "modified": "2024-03-25T19:16:32.776Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"classID\":\"6601cbe93f23f0edec86c7b1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a38c6dba-e649-4c74-a39a-e48646add69b",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "8d94b9b8-31e6-41a3-b52f-10b723636973",
+            "name": "register",
+            "url": "http://localhost:8000/api/v1/student/register",
+            "method": "POST",
+            "sortNum": 230000,
+            "created": "2024-03-26T07:13:22.650Z",
+            "modified": "2024-03-26T07:36:13.267Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "firstName",
+                        "value": "Mehul"
+                    },
+                    {
+                        "name": "midName",
+                        "value": ""
+                    },
+                    {
+                        "name": "lastName",
+                        "value": "Patel"
+                    },
+                    {
+                        "name": "fatherName",
+                        "value": "Radheshyam Patel"
+                    },
+                    {
+                        "name": "motherName",
+                        "value": "Parwati Patel"
+                    },
+                    {
+                        "name": "dob",
+                        "value": "2002-11-16"
+                    },
+                    {
+                        "name": "gender",
+                        "value": "MALE"
+                    },
+                    {
+                        "name": "nationality",
+                        "value": "INDIAN"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "6260702385"
+                    },
+                    {
+                        "name": "eamil",
+                        "value": "gp1611@gmail.com"
+                    },
+                    {
+                        "name": "presentAddress[line1]",
+                        "value": "mandir para"
+                    },
+                    {
+                        "name": "presentAddress[line2]",
+                        "value": ""
+                    },
+                    {
+                        "name": "presentAddress[house]",
+                        "value": "182/A"
+                    },
+                    {
+                        "name": "presentAddress[street]",
+                        "value": "beech basti"
+                    },
+                    {
+                        "name": "presentAddress[locality]",
+                        "value": "dhanagar"
+                    },
+                    {
+                        "name": "presentAddress[landmark]",
+                        "value": "no"
+                    },
+                    {
+                        "name": "presentAddress[city]",
+                        "value": "raigarh"
+                    },
+                    {
+                        "name": "presentAddress[pin]",
+                        "value": "496001"
+                    },
+                    {
+                        "name": "presentAddress[district]",
+                        "value": "raigarh"
+                    },
+                    {
+                        "name": "presentAddress[state]",
+                        "value": "cg"
+                    },
+                    {
+                        "name": "presentAddress[coutntry]",
+                        "value": "India"
+                    },
+                    {
+                        "name": "sameAsPresent",
+                        "value": "false"
+                    },
+                    {
+                        "name": "permanentAddress[line1]",
+                        "value": "l2"
+                    },
+                    {
+                        "name": "permanentAddress[line2]",
+                        "value": ""
+                    },
+                    {
+                        "name": "permanentAddress[house]",
+                        "value": ""
+                    },
+                    {
+                        "name": "permanentAddress[street]",
+                        "value": ""
+                    },
+                    {
+                        "name": "permanentAddress[locality]",
+                        "value": "bilaspur"
+                    },
+                    {
+                        "name": "permanentAddress[landmark]",
+                        "value": ""
+                    },
+                    {
+                        "name": "permanentAddress[city]",
+                        "value": "bilaspur"
+                    },
+                    {
+                        "name": "permanentAddress[pin]",
+                        "value": "495001"
+                    },
+                    {
+                        "name": "permanentAddress[district]",
+                        "value": "bilaspur"
+                    },
+                    {
+                        "name": "permanentAddress[state]",
+                        "value": "cg"
+                    },
+                    {
+                        "name": "permanentAddress[coutntry]",
+                        "value": "India"
+                    },
+                    {
+                        "name": "pwd",
+                        "value": "false"
+                    },
+                    {
+                        "name": "pwdData",
+                        "value": "no"
+                    },
+                    {
+                        "name": "fromAnotherSchool",
+                        "value": "true"
+                    },
+                    {
+                        "name": "previosAcedmicData[examinationName]",
+                        "value": "ssc"
+                    },
+                    {
+                        "name": "previosAcedmicData[bordName]",
+                        "value": "cg"
+                    },
+                    {
+                        "name": "previosAcedmicData[yearOfPassing]",
+                        "value": "2019"
+                    },
+                    {
+                        "name": "previosAcedmicData[rollNumber]",
+                        "value": "01"
+                    },
+                    {
+                        "name": "previosAcedmicData[gradingSystem]",
+                        "value": "percentage"
+                    },
+                    {
+                        "name": "previosAcedmicData[grade]",
+                        "value": ""
+                    },
+                    {
+                        "name": "previosAcedmicData[perentage]",
+                        "value": "55"
+                    },
+                    {
+                        "name": "previosAcedmicData[totalMarks]",
+                        "value": "100"
+                    },
+                    {
+                        "name": "previosAcedmicData[obtainMarks]",
+                        "value": "55"
+                    },
+                    {
+                        "name": "tc[schoolName]",
+                        "value": "lcit"
+                    },
+                    {
+                        "name": "tc[tcNumber]",
+                        "value": "101"
+                    },
+                    {
+                        "name": "tc[admissionNumber]",
+                        "value": "001"
+                    },
+                    {
+                        "name": "tc[date]",
+                        "value": "2022-02-15"
+                    },
+                    {
+                        "name": "migration[schoolName]",
+                        "value": "lcit"
+                    },
+                    {
+                        "name": "migration[migrationNumber]",
+                        "value": "M21230"
+                    },
+                    {
+                        "name": "migration[rollNumber]",
+                        "value": "303102221021"
+                    },
+                    {
+                        "name": "migration[date]",
+                        "value": "2022-5-8"
+                    }
+                ],
+                "files": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5b46b939-8fad-4feb-b928-566248aa1abb",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "8d94b9b8-31e6-41a3-b52f-10b723636973",
+            "name": "login",
+            "url": "http://localhost:8000/api/v1/student/login",
+            "method": "POST",
+            "sortNum": 250000,
+            "created": "2024-03-26T07:14:10.165Z",
+            "modified": "2024-03-26T07:48:20.725Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\":\"campus.mehul.patel\",\n  \"password\": \"Campus@1234\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c71f1c4b-288d-4560-8a8d-d1b6505518a9",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "8d94b9b8-31e6-41a3-b52f-10b723636973",
+            "name": "logout",
+            "url": "http://localhost:8000/api/v1/student//logout",
+            "method": "POST",
+            "sortNum": 260000,
+            "created": "2024-03-26T07:14:43.892Z",
+            "modified": "2024-03-26T07:14:59.742Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3cc66e64-2414-41d2-a2e6-4d1acf5d138b",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "8d94b9b8-31e6-41a3-b52f-10b723636973",
+            "name": "refresh-token",
+            "url": "http://localhost:8000/api/v1/student/refresh-token",
+            "method": "POST",
+            "sortNum": 270000,
+            "created": "2024-03-26T07:15:44.347Z",
+            "modified": "2024-03-26T07:16:05.205Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5fb1bf37-d791-4f05-aede-00b134635667",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "8d94b9b8-31e6-41a3-b52f-10b723636973",
+            "name": "change-current-password",
+            "url": "http://localhost:8000/api/v1/student/change-current-password",
+            "method": "POST",
+            "sortNum": 280000,
+            "created": "2024-03-26T07:16:18.905Z",
+            "modified": "2024-03-26T07:16:32.328Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "134045e4-836e-4152-ae27-388d233b0c4a",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "8d94b9b8-31e6-41a3-b52f-10b723636973",
+            "name": "update-staff-photo",
+            "url": "http://localhost:8000/api/v1/student/update-staff-photo",
+            "method": "POST",
+            "sortNum": 290000,
+            "created": "2024-03-26T07:16:48.794Z",
+            "modified": "2024-03-26T07:17:00.572Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "297fff31-d6c8-4f05-a7c7-3edd9dda7324",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "8d94b9b8-31e6-41a3-b52f-10b723636973",
+            "name": "update-staff-sign",
+            "url": "http://localhost:8000/api/v1/student/update-staff-sign",
+            "method": "POST",
+            "sortNum": 300000,
+            "created": "2024-03-26T07:17:23.184Z",
+            "modified": "2024-03-26T07:17:42.732Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b4e5e8ff-8562-4133-85cb-9f6ab82aa17c",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "9b4ff644-ebd4-4576-ae94-154d3f66bc44",
+            "name": "add-student",
+            "url": "http://localhost:8000/api/v1/join-class/add-student",
+            "method": "POST",
+            "sortNum": 320000,
+            "created": "2024-03-26T07:52:41.718Z",
+            "modified": "2024-03-26T07:56:44.336Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"student\":\"66027aec16c038100483cb46\",\n  \"classId\":\"6601cbe93f23f0edec86c7b1\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c26fed83-37ab-46d9-b2a4-ec7af1ce65a8",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "9b4ff644-ebd4-4576-ae94-154d3f66bc44",
+            "name": "remove-student",
+            "url": "http://localhost:8000/api/v1/join-class/remove-student",
+            "method": "POST",
+            "sortNum": 330000,
+            "created": "2024-03-26T07:53:14.052Z",
+            "modified": "2024-03-26T07:53:26.812Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]

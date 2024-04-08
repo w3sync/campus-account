@@ -3,7 +3,8 @@
         updateClassDesc,
         changeClassName,
         chaneClassTeacher,
-        deactivetClass
+        deactivetClass,
+        getAllClass
 } from "../controllers/class.controller.js";
 
 
@@ -16,6 +17,7 @@
  router.route("/change-class-name").post(changeClassName);
  router.route("/change-class-teacher").post(chaneClassTeacher);
  router.route("/deactivet-class").post(deactivetClass);
+ router.route("/get-all-class").post(getAllClass);
 
 
  export default router;

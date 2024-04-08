@@ -127,11 +127,54 @@ const deactivetClass = asyncHandler(async (req,res)=>{
 })
 
 
+
+const getAllClass = asyncHandler(async (_,res)=>{
+    const myclass =  await Myclass.aggregate([
+        {
+            $lookup: {
+                from:"staffs",
+                localField: "classTeacher",
+                foreignField:"_id",
+                as: "fullName",
+            }
+        },
+        {
+            $addFields: {
+                "classTeacherFullName": {
+                    $concat:[
+                        {$first:"$fullName.firstName"},
+                        " ",
+                        {$first:"$fullName.midName"},
+                        " ",
+                        {$last:"$fullName.lastName"},
+                    ]
+                }
+              }
+           
+        },
+        {
+            $project: {
+                "_id":1,
+                "name":1,
+                "classTeacherFullName":1
+            }
+        },
+      
+
+    ])
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200,myclass,"get all myclass"));
+})
+
+
 export {
     createClass,
     updateClassDesc,
     changeClassName,
     chaneClassTeacher,
     deactivetClass,
+    getAllClass,
 
 }
