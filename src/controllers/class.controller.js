@@ -156,7 +156,8 @@ const getAllClass = asyncHandler(async (_,res)=>{
             $project: {
                 "_id":1,
                 "name":1,
-                "classTeacherFullName":1
+                "classTeacherFullName":1,
+                "isActive":1,
             }
         },
       
