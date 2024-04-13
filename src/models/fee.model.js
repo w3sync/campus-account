@@ -5,7 +5,7 @@ const feeSchema = new mongoose.Schema({
     name:{type:String ,required:true},
     desc : {type:String, required:true},
     ammount : {type:Number, required:true},
-    addedBy : {type:mongoose.Schema.ObjectId, ref:'staff',required:true}
+    addedBy : {type:mongoose.Schema.ObjectId, ref:'staff',default:"Admin"}
 },{timestamps:true})
 
 

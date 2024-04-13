@@ -25,7 +25,7 @@ import classRouter from "./routes/class.routes.js"
 import joinClassRouter from "./routes/joinClass.routes.js"
 import studentRouter from "./routes/studnet.routes.js"
 import feeModeRouter from "./routes/feeMode.routes.js"
-
+import feeRouter from "./routes/fee.routes.js"
 //route decleration 
 
 app.use("/api/v1/staff",staffRouter);
@@ -35,7 +35,7 @@ app.use("/api/v1/class",classRouter);
 app.use("/api/v1/join-class",joinClassRouter);
 app.use("/api/v1/student",studentRouter);
 app.use("/api/v1/fee-mode",feeModeRouter);
-
+app.use("/api/v1/fee",feeRouter);
 
 
 export { app }

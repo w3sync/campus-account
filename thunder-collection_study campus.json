@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "study campus",
-    "dateExported": "2024-04-13T07:34:48.190Z",
+    "dateExported": "2024-04-13T08:56:43.596Z",
     "version": "1.1",
     "folders": [
         {
@@ -52,6 +52,13 @@
             "containerId": "",
             "created": "2024-04-11T15:37:49.357Z",
             "sortNum": 70000
+        },
+        {
+            "_id": "43362182-3e5a-4bcc-bd24-44f48c7719de",
+            "name": "fee",
+            "containerId": "",
+            "created": "2024-04-13T08:46:11.744Z",
+            "sortNum": 80000
         }
     ],
     "requests": [
@@ -1095,6 +1102,25 @@
             "tests": []
         },
         {
+            "_id": "a56db4a2-9312-4d4a-b561-0ae395529d10",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "43362182-3e5a-4bcc-bd24-44f48c7719de",
+            "name": "create-fee",
+            "url": "http://localhost:8000/api/v1/fee/create-fee",
+            "method": "POST",
+            "sortNum": 350000,
+            "created": "2024-04-13T08:46:11.744Z",
+            "modified": "2024-04-13T08:50:46.580Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Admisson\",\n  \"desc\":\"demo\",\n  \"ammount\": 527\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
             "_id": "77563ddb-19a1-4189-828d-e54626892beb",
             "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
             "containerId": "a61aa13a-c090-494a-abae-353cacb11efe",
@@ -1114,6 +1140,25 @@
             "tests": []
         },
         {
+            "_id": "3f0e2cc7-984f-4dda-9b44-787576e97f17",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "43362182-3e5a-4bcc-bd24-44f48c7719de",
+            "name": "update-fee",
+            "url": "http://localhost:8000/api/v1/fee/update-fee",
+            "method": "PATCH",
+            "sortNum": 360000,
+            "created": "2024-04-13T08:46:11.745Z",
+            "modified": "2024-04-13T08:55:13.048Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"feeID\":\"661a484a32803af2ff697cb9\",\n  \"ammount\":500\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
             "_id": "0203bb1d-b72f-4fa4-a79e-734d97f98b65",
             "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
             "containerId": "a61aa13a-c090-494a-abae-353cacb11efe",
@@ -1128,6 +1173,25 @@
             "body": {
                 "type": "json",
                 "raw": "{\n  \"feeModeId\":\"661a35348d19da31e9638837\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ba45cc8b-3baa-45ed-b23f-6082baa82a1b",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "43362182-3e5a-4bcc-bd24-44f48c7719de",
+            "name": "remove-fee",
+            "url": "http://localhost:8000/api/v1/fee/remove-fee",
+            "method": "POST",
+            "sortNum": 370000,
+            "created": "2024-04-13T08:46:11.746Z",
+            "modified": "2024-04-13T08:54:24.091Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"feeID\":\"661a482932803af2ff697cb2\"\n}",
                 "form": []
             },
             "tests": []
