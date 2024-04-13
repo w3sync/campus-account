@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "study campus",
-    "dateExported": "2024-03-26T08:01:51.026Z",
+    "dateExported": "2024-04-13T07:34:48.190Z",
     "version": "1.1",
     "folders": [
         {
@@ -45,6 +45,13 @@
             "containerId": "",
             "created": "2024-03-26T07:51:48.943Z",
             "sortNum": 60000
+        },
+        {
+            "_id": "a61aa13a-c090-494a-abae-353cacb11efe",
+            "name": "feeMode",
+            "containerId": "",
+            "created": "2024-04-11T15:37:49.357Z",
+            "sortNum": 70000
         }
     ],
     "requests": [
@@ -517,6 +524,25 @@
             "tests": []
         },
         {
+            "_id": "2c291972-8b9e-4b89-9f50-88d4c4e2a2e5",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "ade7a73f-a776-450e-9777-b6c6c6b77a94",
+            "name": "Get all department",
+            "url": "http://localhost:8000/api/v1/department//get-all-department",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-04-08T19:22:35.606Z",
+            "modified": "2024-04-08T19:23:13.173Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcxMDAyMDY4MiwiZXhwIjoxNzEwMTA3MDgyfQ.Y6EEs7JgWaE5nqrwpkJuV6dpi0TnwAlhW4z2zIqwe8U"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "742d4a1b-826b-406c-afc3-1d8794be08ba",
             "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
             "containerId": "ade7a73f-a776-450e-9777-b6c6c6b77a94",
@@ -602,6 +628,20 @@
                 "raw": "{\r\n    \"name\":\"Demo4\",\r\n    \"classNum\":\"0\",\r\n    \"sec\":\"A\",\r\n    \"year\":\"2023\",\r\n    \"isActive\":\"true\",\r\n    \"desc\":\"demo for testig\",\r\n    \"classTeacher\": \"65edac8d10d37656e406f75c\"\r\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "884a5a56-1e7c-424a-9a18-7127711a31e0",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7",
+            "name": "Get all class",
+            "url": "http://localhost:8000/api/v1/class/get-all-class",
+            "method": "POST",
+            "sortNum": 170000,
+            "created": "2024-04-08T20:37:40.348Z",
+            "modified": "2024-04-08T20:38:14.099Z",
+            "headers": [],
+            "params": [],
             "tests": []
         },
         {
@@ -1033,6 +1073,63 @@
             "modified": "2024-03-26T07:53:26.812Z",
             "headers": [],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b0e76a3c-8c16-4105-973a-8d477f8cf949",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "a61aa13a-c090-494a-abae-353cacb11efe",
+            "name": "create-fee-mode",
+            "url": "http://localhost:8000/api/v1/fee-mode/create-fee-mode",
+            "method": "POST",
+            "sortNum": 350000,
+            "created": "2024-04-11T15:38:01.182Z",
+            "modified": "2024-04-13T05:31:33.849Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"trenig\",\n  \"desc\":\"demo\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "77563ddb-19a1-4189-828d-e54626892beb",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "a61aa13a-c090-494a-abae-353cacb11efe",
+            "name": "update-fee-mode",
+            "url": "http://localhost:8000/api/v1/fee-mode/update-fee-mode",
+            "method": "PATCH",
+            "sortNum": 360000,
+            "created": "2024-04-13T05:34:05.324Z",
+            "modified": "2024-04-13T06:01:01.919Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"feeModeId\":\"661a190f12e5a3023a97ef50\",\n  \"desc\":\"new tre demo 120\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0203bb1d-b72f-4fa4-a79e-734d97f98b65",
+            "colId": "7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3",
+            "containerId": "a61aa13a-c090-494a-abae-353cacb11efe",
+            "name": "remove-fee-mode",
+            "url": "http://localhost:8000/api/v1/fee-mode/remove-fee-mode",
+            "method": "POST",
+            "sortNum": 370000,
+            "created": "2024-04-13T06:02:16.239Z",
+            "modified": "2024-04-13T07:33:26.302Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"feeModeId\":\"661a35348d19da31e9638837\"\n}",
+                "form": []
+            },
             "tests": []
         }
     ]

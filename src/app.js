@@ -24,6 +24,7 @@ import teamRouter from "./routes/team.routes.js"
 import classRouter from "./routes/class.routes.js"
 import joinClassRouter from "./routes/joinClass.routes.js"
 import studentRouter from "./routes/studnet.routes.js"
+import feeModeRouter from "./routes/feeMode.routes.js"
 
 //route decleration 
 
@@ -33,6 +34,7 @@ app.use("/api/v1/team",teamRouter);
 app.use("/api/v1/class",classRouter);
 app.use("/api/v1/join-class",joinClassRouter);
 app.use("/api/v1/student",studentRouter);
+app.use("/api/v1/fee-mode",feeModeRouter);
 
 
 

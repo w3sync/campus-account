@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { feeModeSchema } from "../models/feeMode.model.js";
 
 
 

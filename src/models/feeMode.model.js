@@ -9,9 +9,5 @@ const feeModeSchema = new mongoose.Schema({
 },{timestamps:true})
 
 
-const FeeMode = mongoose.model("feemode",feeModeSchema);
+export const FeeMode = mongoose.model("feemode",feeModeSchema);
 
-export {
-  feeModeSchema,
-  FeeMode
-}
