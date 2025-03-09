@@ -91,7 +91,7 @@ staffSchema.methods.genrateAccessToken = async function() {
             username : this.username,
             email : this.email,
         },
-        process.env.ACCESS_TOKEN_SECRET,
+        String(process.env.ACCESS_TOKEN_SECRET),
         {
             expiresIn : process.env.ACCESS_TOKEN_EXPIRY
         }
@@ -103,7 +103,7 @@ staffSchema.methods.genrateRefreshToken = async function() {
         {
             _id: this._id,
         },
-        process.env.REFRESH_TOKEN_SECRET,
+        String(process.env.REFRESH_TOKEN_SECRET),
         {
             expiresIn : process.env.REFRESH_TOKEN_EXPIRY
         }

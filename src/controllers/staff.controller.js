@@ -17,7 +17,7 @@ const genrateAccessAndRefereshToken = async (userId) => {
         return { accessToken, refreshToken }
 
     } catch (err) {
-        throw new ApiError(500, "Somthing went wrong while generating referesh and access token")
+        throw new ApiError(500, "Somthing went wrong while generating referesh and access token: ", err)
     }
 } 
 
