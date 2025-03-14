@@ -12,7 +12,7 @@ const addressSchema = new Schema({
     pin: {type:Number,required:true},
     district : {type:String,required:true},
     state: {type:String,required:true},
-    coutntry: {type:String,default:"India"}
+    country: {type:String,default:"India"}
 },{_id:false})
 
 const userSchema = new Schema({
@@ -31,7 +31,7 @@ const userSchema = new Schema({
     // Contect Details 
     username: { type: String},
     phone: { type: String, required:true },
-    eamil: { type: String, uniqe:true ,trim: true, lowercase: true },
+    email: { type: String, uniqe:true ,trim: true, lowercase: true },
     password: { type: String },
 
 

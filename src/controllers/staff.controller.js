@@ -19,7 +19,7 @@ const genrateAccessAndRefereshToken = async (userId) => {
     } catch (err) {
         throw new ApiError(500, "Somthing went wrong while generating referesh and access token: ", err)
     }
-} 
+}
 
 const registerStaff = asyncHandler(async (req, res) => {
     // return res.status(200).json(new ApiResponse(200,req.body,"try"))
@@ -162,8 +162,10 @@ const loginStaff = asyncHandler(async (req, res) => {
     const loggedInStaff = await Staff.findById(staff._id).select("-password -refreshToken")
 
     const options = {
-        httpOnly: true,
-        secure: true,
+        httpOnly: true,     // Not accessible via JavaScript
+        secure: false,      // 'false' because it's localhost, but in production use true with HTTPS
+        sameSite: 'Lax',    // Allow cross-site cookie
+        maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
     }
 
     return res
@@ -214,8 +216,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
         return res
             .status(200)
-            .cookie("accessToken", accessToken,options)
-            .cookie("refreshToken", refreshToken,options)
+            .cookie("accessToken", accessToken, options)
+            .cookie("refreshToken", refreshToken, options)
             .json(new ApiResponse(200, { accessToken, refreshToken }, "AccessToken refreshed"))
 
     } catch (error) {
@@ -253,15 +255,15 @@ const updateStaffPhoto = asyncHandler(async (req, res) => {
     const photo = await uplodeOnCloudinary(staffPhotoLocalPath);
     if (!photo?.url) throw new ApiError(400, "error on uploding Image");
     const staff = await Staff.findById(req.staff?._id).select("-password -refreshToken");
-    if(!staff) throw new ApiError(500,"Error while finding staff for update photo")
+    if (!staff) throw new ApiError(500, "Error while finding staff for update photo")
     await deleteOnCloudinaryByUrl(staff.photo)
     staff.photo = photo?.url;
-    
+
     const updatedStaff = await staff.save()// await Staff.findById(req.staff?._id).select();
-    
+
     return res
-    .status(200)
-    .json(new ApiResponse(200,updatedStaff,"Photo uploded successfull"))
+        .status(200)
+        .json(new ApiResponse(200, updatedStaff, "Photo uploded successfull"))
 
 })
 
@@ -273,15 +275,15 @@ const updateStaffSign = asyncHandler(async (req, res) => {
     const sign = await uplodeOnCloudinary(staffSignLocalPath);
     if (!sign?.url) throw new ApiError(400, "error on uploding Image");
     const staff = await Staff.findById(req.staff?._id).select("-password -refreshToken");
-    if(!staff) throw new ApiError(500,"Error while finding staff for update sign")
+    if (!staff) throw new ApiError(500, "Error while finding staff for update sign")
     await deleteOnCloudinaryByUrl(staff.sign)
     staff.sign = sign?.url;
-    
+
     const updatedStaff = await staff.save()// await Staff.findById(req.staff?._id).select();
-    
+
     return res
-    .status(200)
-    .json(new ApiResponse(200,updatedStaff,"sign uploded successfull"))
+        .status(200)
+        .json(new ApiResponse(200, updatedStaff, "sign uploded successfull"))
 
 })
 
