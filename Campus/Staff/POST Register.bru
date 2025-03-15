@@ -1,0 +1,67 @@
+meta {
+  name: POST Register
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{HOST}}/api/v1/staff/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstName": "Ankan",
+    "midName": "",
+    "lastName": "Kanaki",
+    "fatherName": "GodFather",
+    "motherName": "GodMother",
+    "dob": "2000-02-29",
+    "gender": "MALE",
+    "nationality": "INDIAN",
+    "pwd": false,
+    "pwdData": "",
+    "phone": "9696969696",
+    "eamil": "ankan@gmail.com",
+    "permanentAddress": {
+      "line1": "kucha bhi nagar",
+      "line2": "ha sab bhi",
+      "house": "FF-98",
+      "street": "ha yahi road",
+      "locality": "near by",
+      "landmark": "kotra road",
+      "city": "ppt",
+      "pin": 511006,
+      "district": "soso nagar",
+      "state": "balaji"
+    },
+    "sameAsPresent": true,
+    "presentAddress": {
+      "line1": "kucha bhi nagar",
+      "line2": "ha sab bhi",
+      "house": "FF-98",
+      "street": "ha yahi road",
+      "locality": "near by",
+      "landmark": "kotra road",
+      "city": "ppt",
+      "pin": 511006,
+      "district": "soso nagar",
+      "state": "balaji"
+    },
+    "role": "TECHNICAL",
+    "post": "DEV",
+    "sallery": 900,
+    "joiningYear": "2025-03-09",
+    "qualification": {
+      "examinationName": "CGBSE",
+      "bordName": "UUPP",
+      "yearOfPassing": "2020-02-25",
+      "rollNumber": 3020256696,
+      "gradingSystem": "letterGrade",
+      "grade": "X",
+      "totalMarks": 500,
+      "obtainMarks": 500
+    }
+  }
+}

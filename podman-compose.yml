@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: docker.io/library/mongo:latest  # MongoDB official image
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    volumes:
+      - mongo_data:/data/db
+
+  mongo-express:
+    image: docker.io/library/mongo-express:latest  # Mongo Express GUI
+    container_name: mongo-express
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - "8081:8081"  # Expose Mongo Express on localhost:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: secret
+      ME_CONFIG_MONGODB_SERVER: mongodb  # MongoDB service name in the same network
+      ME_CONFIG_BASICAUTH_USERNAME: admin  # Optional: Web UI login username
+      ME_CONFIG_BASICAUTH_PASSWORD: pass  # Optional: Web UI login password
+
+volumes:
+  mongo_data:

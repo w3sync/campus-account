@@ -1,0 +1,891 @@
+---
+client: Thunder Client
+collectionName: study campus
+dateExported: '2024-04-13T08:56:43.596Z'
+version: '1.1'
+folders:
+- _id: 02c28078-3207-4979-8928-7c71157a66e1
+  name: Staff
+  containerId: ''
+  created: '2024-03-05T20:40:43.099Z'
+  sortNum: 10000
+- _id: ade7a73f-a776-450e-9777-b6c6c6b77a94
+  name: Department
+  containerId: ''
+  created: '2024-03-09T18:33:47.356Z'
+  sortNum: 20000
+- _id: c61d0fb0-e240-4e49-9e47-db7b0c5c4815
+  name: team
+  containerId: ''
+  created: '2024-03-09T19:24:51.819Z'
+  sortNum: 30000
+- _id: 24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7
+  name: class
+  containerId: ''
+  created: '2024-03-25T18:53:56.496Z'
+  sortNum: 40000
+- _id: 8d94b9b8-31e6-41a3-b52f-10b723636973
+  name: student
+  containerId: ''
+  created: '2024-03-26T07:12:11.280Z'
+  sortNum: 50000
+- _id: 9b4ff644-ebd4-4576-ae94-154d3f66bc44
+  name: join-class
+  containerId: ''
+  created: '2024-03-26T07:51:48.943Z'
+  sortNum: 60000
+- _id: a61aa13a-c090-494a-abae-353cacb11efe
+  name: feeMode
+  containerId: ''
+  created: '2024-04-11T15:37:49.357Z'
+  sortNum: 70000
+- _id: 43362182-3e5a-4bcc-bd24-44f48c7719de
+  name: fee
+  containerId: ''
+  created: '2024-04-13T08:46:11.744Z'
+  sortNum: 80000
+requests:
+- _id: fe0ad16b-0eb5-4f00-9565-8905f31ee025
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 02c28078-3207-4979-8928-7c71157a66e1
+  name: staff login
+  url: http://localhost:8000/api/v1/staff/login
+  method: POST
+  sortNum: 20000
+  created: '2024-03-06T17:29:12.492Z'
+  modified: '2024-03-08T11:26:14.038Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "username":"campus.gourav.patel",
+        "password": "Campus@4321"
+      }
+    form: []
+  reqType: post
+  tests: []
+- _id: ac75f28e-9837-4f11-921c-a07908601efe
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 02c28078-3207-4979-8928-7c71157a66e1
+  name: staff register
+  url: http://localhost:8000/api/v1/staff/register
+  method: POST
+  sortNum: 30000
+  created: '2024-03-07T14:53:53.871Z'
+  modified: '2024-03-10T12:50:22.469Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcxMDAyMDY4MiwiZXhwIjoxNzEwMTA3MDgyfQ.Y6EEs7JgWaE5nqrwpkJuV6dpi0TnwAlhW4z2zIqwe8U
+  params: []
+  body:
+    type: formdata
+    raw: ''
+    form:
+    - name: firstName
+      value: Mehul
+    - name: midName
+      value: ''
+    - name: lastName
+      value: Patel
+    - name: fatherName
+      value: Radheshyam Patel
+    - name: motherName
+      value: Parwati Patel
+    - name: dob
+      value: '2002-11-16'
+    - name: gender
+      value: MALE
+    - name: nationality
+      value: INDIAN
+    - name: phone
+      value: '6260702385'
+    - name: eamil
+      value: gp1611@gmail.com
+    - name: presentAddress[line1]
+      value: mandir para
+    - name: presentAddress[line2]
+      value: ''
+    - name: presentAddress[house]
+      value: 182/A
+    - name: presentAddress[street]
+      value: beech basti
+    - name: presentAddress[locality]
+      value: dhanagar
+    - name: presentAddress[landmark]
+      value: 'no'
+    - name: presentAddress[city]
+      value: raigarh
+    - name: presentAddress[pin]
+      value: '496001'
+    - name: presentAddress[district]
+      value: raigarh
+    - name: presentAddress[state]
+      value: cg
+    - name: presentAddress[coutntry]
+      value: India
+    - name: sameAsPresent
+      value: 'true'
+    - name: permanentAddress[line1]
+      value: l2
+    - name: permanentAddress[line2]
+      value: ''
+    - name: permanentAddress[house]
+      value: ''
+    - name: permanentAddress[street]
+      value: ''
+    - name: permanentAddress[locality]
+      value: bilaspur
+    - name: permanentAddress[landmark]
+      value: ''
+    - name: permanentAddress[city]
+      value: bilaspur
+    - name: permanentAddress[pin]
+      value: '495001'
+    - name: permanentAddress[district]
+      value: bilaspur
+    - name: permanentAddress[state]
+      value: cg
+    - name: permanentAddress[coutntry]
+      value: India
+    - name: role
+      value: HEAD
+    - name: post
+      value: DEV
+    - name: sallery
+      value: '00'
+    - name: joiningYear
+      value: '2023'
+    - name: qualification[0][examinationName]
+      value: ssc
+    - name: qualification[0][bordName]
+      value: cg
+    - name: qualification[0][yearOfPassing]
+      value: '2019'
+    - name: qualification[0][rollNumber]
+      value: '01'
+    - name: qualification[0][gradingSystem]
+      value: percentage
+    - name: qualification[0][grade]
+      value: ''
+    - name: qualification[0][perentage]
+      value: '55'
+    - name: qualification[0][totalMarks]
+      value: '100'
+    - name: qualification[0][obtainMarks]
+      value: '55'
+    - name: qualification[1][examinationName]
+      value: hsc
+    - name: qualification[1][bordName]
+      value: cb
+    - name: qualification[1][yearOfPassing]
+      value: '2021'
+    - name: qualification[1][rollNumber]
+      value: '02'
+    - name: qualification[1][gradingSystem]
+      value: letterGrade
+    - name: qualification[1][grade]
+      value: D
+    - name: qualification[1][perentage]
+      value: ''
+    - name: qualification[1][totalMarks]
+      value: ''
+    - name: qualification[1][obtainMarks]
+      value: ''
+    - name: pwd
+      value: 'false'
+    - name: pwdData
+      value: 'no'
+    files:
+    - name: photo
+      value: c:\Users\DELL\Pictures\Saved Pictures\photo.jpg
+      isDisabled: true
+    - name: sign
+      value: c:\Users\DELL\Pictures\Saved Pictures\ph (3).jpg
+      isDisabled: true
+  reqType: post
+  tests: []
+- _id: 8d042203-cdbe-4def-9fa3-3976ef9ce587
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 02c28078-3207-4979-8928-7c71157a66e1
+  name: staff logout
+  url: http://localhost:8000/api/v1/staff/logout
+  method: POST
+  sortNum: 40000
+  created: '2024-03-07T19:12:11.222Z'
+  modified: '2024-03-07T19:24:34.770Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWU5ZjQ3MTFmMGI3MjMzZTRiZTRlNmQiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcwOTgzODY4OCwiZXhwIjoxNzA5OTI1MDg4fQ.7ubYfbn_tXYr_p5uwBCKesULwC8oRbO3uUqICndWoko
+  params: []
+  tests: []
+- _id: e43d0ee7-e134-4a56-918d-5bd56c551ce2
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 02c28078-3207-4979-8928-7c71157a66e1
+  name: refresh-token
+  url: http://localhost:8000/api/v1/staff/refresh-token
+  method: POST
+  sortNum: 50000
+  created: '2024-03-08T10:30:26.567Z'
+  modified: '2024-03-08T10:41:35.604Z'
+  headers: []
+  params: []
+  reqType: get
+  tests: []
+- _id: 7fd37ad3-04c4-4cb9-8261-ab14a7315eee
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 02c28078-3207-4979-8928-7c71157a66e1
+  name: change-current-password
+  url: http://localhost:8000/api/v1/staff/change-current-password
+  method: POST
+  sortNum: 60000
+  created: '2024-03-08T11:08:29.335Z'
+  modified: '2024-03-08T11:25:59.331Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcwOTg5NzEzNCwiZXhwIjoxNzA5OTgzNTM0fQ.Agk8TNIpHkLmHWWBbOxQd_aAk-XXcYf-smyJjRQfEIE
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "oldPassword": "Campus@1234",
+        "newPassword": "Campus@4321"
+      }
+    form: []
+  tests: []
+- _id: 41cb5e8c-a1d6-483c-92ac-8db98bc33576
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 02c28078-3207-4979-8928-7c71157a66e1
+  name: update-staff-photo
+  url: http://localhost:8000/api/v1/staff/update-staff-photo
+  method: POST
+  sortNum: 70000
+  created: '2024-03-08T17:45:34.502Z'
+  modified: '2024-03-08T18:04:52.062Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcwOTkyMDU1MywiZXhwIjoxNzEwMDA2OTUzfQ.1VihN5-Bgvqx-KxP14QqW56tc4K7WwJRM2kjQ0W61UQ
+  params: []
+  body:
+    type: formdata
+    raw: ''
+    form: []
+    files:
+    - name: photo
+      value: c:\Users\DELL\Pictures\Camera Roll\WIN_20231205_20_32_38_Pro.jpg
+  tests: []
+- _id: e807a491-ee57-4fc5-8c5c-8597e51de3f0
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 02c28078-3207-4979-8928-7c71157a66e1
+  name: update-staff-sign
+  url: http://localhost:8000/api/v1/staff/update-staff-sign
+  method: POST
+  sortNum: 80000
+  created: '2024-03-08T18:28:36.682Z'
+  modified: '2024-03-08T18:30:20.537Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcwOTkyMDU1MywiZXhwIjoxNzEwMDA2OTUzfQ.1VihN5-Bgvqx-KxP14QqW56tc4K7WwJRM2kjQ0W61UQ
+  params: []
+  body:
+    type: formdata
+    raw: ''
+    form: []
+    files:
+    - name: sign
+      value: c:\Users\DELL\Pictures\Saved Pictures\ph (3).jpg
+  tests: []
+- _id: 5aa6b2e3-d85b-41f4-ad67-5c5ceb833145
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: ade7a73f-a776-450e-9777-b6c6c6b77a94
+  name: create department
+  url: http://localhost:8000/api/v1/department/create-department
+  method: POST
+  sortNum: 90000
+  created: '2024-03-09T18:34:02.594Z'
+  modified: '2024-03-10T12:51:20.144Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcxMDAyMDY4MiwiZXhwIjoxNzEwMTA3MDgyfQ.Y6EEs7JgWaE5nqrwpkJuV6dpi0TnwAlhW4z2zIqwe8U
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "name": "Account",
+        "desc": "account department of our campus",
+        "head": "65edac8d10d37656e406f75c"
+      }
+    form: []
+  reqType: post
+  tests: []
+- _id: 57d9dbc9-b9f8-40b8-a538-fe3f2457f0cb
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: c61d0fb0-e240-4e49-9e47-db7b0c5c4815
+  name: add member
+  url: http://localhost:8000/api/v1/team/add-member
+  method: POST
+  sortNum: 100000
+  created: '2024-03-09T19:25:04.338Z'
+  modified: '2024-03-09T20:25:53.319Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: "{\n  \"member\":\"65eaf5a27b6979182d229786\",\n  \"department\":\"65ecc12e9a23e57d8f930b47\"\n
+      \ \n}"
+    form: []
+  reqType: post
+  tests: []
+- _id: 0b806ccb-cb87-4fda-baac-101c14d24e5e
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: c61d0fb0-e240-4e49-9e47-db7b0c5c4815
+  name: remove member
+  url: http://localhost:8000/api/v1/team/remove-member
+  method: POST
+  sortNum: 110000
+  created: '2024-03-09T20:48:04.063Z'
+  modified: '2024-03-09T20:49:43.874Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: "{\n  \"member\":\"65eaf5a27b6979182d229786\",\n  \"department\":\"65ecc12e9a23e57d8f930b47\"\n
+      \ \n}"
+    form: []
+  tests: []
+- _id: 2c291972-8b9e-4b89-9f50-88d4c4e2a2e5
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: ade7a73f-a776-450e-9777-b6c6c6b77a94
+  name: Get all department
+  url: http://localhost:8000/api/v1/department//get-all-department
+  method: POST
+  sortNum: 110000
+  created: '2024-04-08T19:22:35.606Z'
+  modified: '2024-04-08T19:23:13.173Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcxMDAyMDY4MiwiZXhwIjoxNzEwMTA3MDgyfQ.Y6EEs7JgWaE5nqrwpkJuV6dpi0TnwAlhW4z2zIqwe8U
+  params: []
+  tests: []
+- _id: 742d4a1b-826b-406c-afc3-1d8794be08ba
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: ade7a73f-a776-450e-9777-b6c6c6b77a94
+  name: update-department-desc
+  url: http://localhost:8000/api/v1/department/update-department-desc
+  method: POST
+  sortNum: 130000
+  created: '2024-03-09T21:32:51.052Z'
+  modified: '2024-03-10T07:21:53.082Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcxMDAyMDY4MiwiZXhwIjoxNzEwMTA3MDgyfQ.Y6EEs7JgWaE5nqrwpkJuV6dpi0TnwAlhW4z2zIqwe8U
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "departmentID": "65ecc2472c34f6cc581307c0",
+        "desc": "Admin of the campus"
+      }
+    form: []
+  reqType: post
+  tests: []
+- _id: ae41b990-479b-487a-87d9-c4fa06fe14d5
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: ade7a73f-a776-450e-9777-b6c6c6b77a94
+  name: change-department-name
+  url: http://localhost:8000/api/v1/department/change-department-name
+  method: POST
+  sortNum: 140000
+  created: '2024-03-10T06:09:06.322Z'
+  modified: '2024-03-10T12:42:14.769Z'
+  headers:
+  - name: Authorization
+    value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZjVhMjdiNjk3OTE4MmQyMjk3ODYiLCJ1c2VybmFtZSI6ImNhbXB1cy5nb3VyYXYucGF0ZWwiLCJyb2xlIjoiSEVBRCIsImlhdCI6MTcxMDAyMDY4MiwiZXhwIjoxNzEwMTA3MDgyfQ.Y6EEs7JgWaE5nqrwpkJuV6dpi0TnwAlhW4z2zIqwe8U
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "departmentID": "65ecc12e9a23e57d8f930b47",
+        "newName": "Devloper"
+      }
+    form: []
+  reqType: post
+  tests: []
+- _id: 49026a34-beb0-4901-84d9-2c8b52955f0c
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: ade7a73f-a776-450e-9777-b6c6c6b77a94
+  name: change-department-head
+  url: http://localhost:8000/api/v1/department/change-department-head
+  method: POST
+  sortNum: 150000
+  created: '2024-03-10T06:49:52.634Z'
+  modified: '2024-03-10T06:51:59.453Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "departmentID": "65ecc12e9a23e57d8f930b47",
+        "head": "65eaf5a27b6979182d229786"
+      }
+    form: []
+  tests: []
+- _id: 7d84aab3-a7a7-4d93-aae3-24b08f879ade
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7
+  name: create class
+  url: http://localhost:8000/api/v1/class/create-class
+  method: POST
+  sortNum: 160000
+  created: '2024-03-25T18:54:15.597Z'
+  modified: '2024-03-25T19:18:56.673Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: "{\r\n    \"name\":\"Demo4\",\r\n    \"classNum\":\"0\",\r\n    \"sec\":\"A\",\r\n
+      \   \"year\":\"2023\",\r\n    \"isActive\":\"true\",\r\n    \"desc\":\"demo
+      for testig\",\r\n    \"classTeacher\": \"65edac8d10d37656e406f75c\"\r\n}"
+    form: []
+  tests: []
+- _id: 884a5a56-1e7c-424a-9a18-7127711a31e0
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7
+  name: Get all class
+  url: http://localhost:8000/api/v1/class/get-all-class
+  method: POST
+  sortNum: 170000
+  created: '2024-04-08T20:37:40.348Z'
+  modified: '2024-04-08T20:38:14.099Z'
+  headers: []
+  params: []
+  tests: []
+- _id: 834b626f-5363-443f-9cca-a47e8ad15fc5
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7
+  name: change-class-name
+  url: http://localhost:8000/api/v1/class/change-class-name
+  method: POST
+  sortNum: 180000
+  created: '2024-03-25T18:56:25.361Z'
+  modified: '2024-03-25T19:14:38.498Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: "{\r\n    \"classID\":\"6601cbe93f23f0edec86c7b1\",\r\n    \"newName\":\"Demo3\"\r\n}"
+    form: []
+  tests: []
+- _id: a00ac828-425f-4534-856c-7503187cf53e
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7
+  name: update-class-desc
+  url: http://localhost:8000/api/v1/class/update-class-desc
+  method: POST
+  sortNum: 190000
+  created: '2024-03-25T18:57:27.692Z'
+  modified: '2024-03-25T19:15:22.887Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: "{\r\n    \"classID\":\"6601cbe93f23f0edec86c7b1\",\r\n    \"desc\": \"demo
+      for update desc testig\"\r\n}"
+    form: []
+  tests: []
+- _id: 754dc803-0c38-4815-915b-95e45749bb00
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7
+  name: change-class-teacher
+  url: http://localhost:8000/api/v1/class/change-class-teacher
+  method: POST
+  sortNum: 200000
+  created: '2024-03-25T18:58:09.331Z'
+  modified: '2024-03-25T19:17:53.999Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+          "classID":"6601cbe93f23f0edec86c7b1",
+          "classTeacher": "65edac8d10d37656e406f75c"
+      }
+    form: []
+  tests: []
+- _id: d2ddaa77-f7b7-485f-88ea-ad52423ac103
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 24e86d15-b7e7-41a6-a5a0-d4378dc7f9f7
+  name: deactivet-class
+  url: http://localhost:8000/api/v1/class/deactivet-class
+  method: POST
+  sortNum: 210000
+  created: '2024-03-25T18:58:37.063Z'
+  modified: '2024-03-25T19:16:32.776Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+          "classID":"6601cbe93f23f0edec86c7b1"
+      }
+    form: []
+  tests: []
+- _id: a38c6dba-e649-4c74-a39a-e48646add69b
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 8d94b9b8-31e6-41a3-b52f-10b723636973
+  name: register
+  url: http://localhost:8000/api/v1/student/register
+  method: POST
+  sortNum: 230000
+  created: '2024-03-26T07:13:22.650Z'
+  modified: '2024-03-26T07:36:13.267Z'
+  headers: []
+  params: []
+  body:
+    type: formdata
+    raw: ''
+    form:
+    - name: firstName
+      value: Mehul
+    - name: midName
+      value: ''
+    - name: lastName
+      value: Patel
+    - name: fatherName
+      value: Radheshyam Patel
+    - name: motherName
+      value: Parwati Patel
+    - name: dob
+      value: '2002-11-16'
+    - name: gender
+      value: MALE
+    - name: nationality
+      value: INDIAN
+    - name: phone
+      value: '6260702385'
+    - name: eamil
+      value: gp1611@gmail.com
+    - name: presentAddress[line1]
+      value: mandir para
+    - name: presentAddress[line2]
+      value: ''
+    - name: presentAddress[house]
+      value: 182/A
+    - name: presentAddress[street]
+      value: beech basti
+    - name: presentAddress[locality]
+      value: dhanagar
+    - name: presentAddress[landmark]
+      value: 'no'
+    - name: presentAddress[city]
+      value: raigarh
+    - name: presentAddress[pin]
+      value: '496001'
+    - name: presentAddress[district]
+      value: raigarh
+    - name: presentAddress[state]
+      value: cg
+    - name: presentAddress[coutntry]
+      value: India
+    - name: sameAsPresent
+      value: 'false'
+    - name: permanentAddress[line1]
+      value: l2
+    - name: permanentAddress[line2]
+      value: ''
+    - name: permanentAddress[house]
+      value: ''
+    - name: permanentAddress[street]
+      value: ''
+    - name: permanentAddress[locality]
+      value: bilaspur
+    - name: permanentAddress[landmark]
+      value: ''
+    - name: permanentAddress[city]
+      value: bilaspur
+    - name: permanentAddress[pin]
+      value: '495001'
+    - name: permanentAddress[district]
+      value: bilaspur
+    - name: permanentAddress[state]
+      value: cg
+    - name: permanentAddress[coutntry]
+      value: India
+    - name: pwd
+      value: 'false'
+    - name: pwdData
+      value: 'no'
+    - name: fromAnotherSchool
+      value: 'true'
+    - name: previosAcedmicData[examinationName]
+      value: ssc
+    - name: previosAcedmicData[bordName]
+      value: cg
+    - name: previosAcedmicData[yearOfPassing]
+      value: '2019'
+    - name: previosAcedmicData[rollNumber]
+      value: '01'
+    - name: previosAcedmicData[gradingSystem]
+      value: percentage
+    - name: previosAcedmicData[grade]
+      value: ''
+    - name: previosAcedmicData[perentage]
+      value: '55'
+    - name: previosAcedmicData[totalMarks]
+      value: '100'
+    - name: previosAcedmicData[obtainMarks]
+      value: '55'
+    - name: tc[schoolName]
+      value: lcit
+    - name: tc[tcNumber]
+      value: '101'
+    - name: tc[admissionNumber]
+      value: '001'
+    - name: tc[date]
+      value: '2022-02-15'
+    - name: migration[schoolName]
+      value: lcit
+    - name: migration[migrationNumber]
+      value: M21230
+    - name: migration[rollNumber]
+      value: '303102221021'
+    - name: migration[date]
+      value: '2022-5-8'
+    files: []
+  tests: []
+- _id: 5b46b939-8fad-4feb-b928-566248aa1abb
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 8d94b9b8-31e6-41a3-b52f-10b723636973
+  name: login
+  url: http://localhost:8000/api/v1/student/login
+  method: POST
+  sortNum: 250000
+  created: '2024-03-26T07:14:10.165Z'
+  modified: '2024-03-26T07:48:20.725Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "username":"campus.mehul.patel",
+        "password": "Campus@1234"
+      }
+    form: []
+  tests: []
+- _id: c71f1c4b-288d-4560-8a8d-d1b6505518a9
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 8d94b9b8-31e6-41a3-b52f-10b723636973
+  name: logout
+  url: http://localhost:8000/api/v1/student//logout
+  method: POST
+  sortNum: 260000
+  created: '2024-03-26T07:14:43.892Z'
+  modified: '2024-03-26T07:14:59.742Z'
+  headers: []
+  params: []
+  tests: []
+- _id: 3cc66e64-2414-41d2-a2e6-4d1acf5d138b
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 8d94b9b8-31e6-41a3-b52f-10b723636973
+  name: refresh-token
+  url: http://localhost:8000/api/v1/student/refresh-token
+  method: POST
+  sortNum: 270000
+  created: '2024-03-26T07:15:44.347Z'
+  modified: '2024-03-26T07:16:05.205Z'
+  headers: []
+  params: []
+  tests: []
+- _id: 5fb1bf37-d791-4f05-aede-00b134635667
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 8d94b9b8-31e6-41a3-b52f-10b723636973
+  name: change-current-password
+  url: http://localhost:8000/api/v1/student/change-current-password
+  method: POST
+  sortNum: 280000
+  created: '2024-03-26T07:16:18.905Z'
+  modified: '2024-03-26T07:16:32.328Z'
+  headers: []
+  params: []
+  tests: []
+- _id: 134045e4-836e-4152-ae27-388d233b0c4a
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 8d94b9b8-31e6-41a3-b52f-10b723636973
+  name: update-staff-photo
+  url: http://localhost:8000/api/v1/student/update-staff-photo
+  method: POST
+  sortNum: 290000
+  created: '2024-03-26T07:16:48.794Z'
+  modified: '2024-03-26T07:17:00.572Z'
+  headers: []
+  params: []
+  tests: []
+- _id: 297fff31-d6c8-4f05-a7c7-3edd9dda7324
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 8d94b9b8-31e6-41a3-b52f-10b723636973
+  name: update-staff-sign
+  url: http://localhost:8000/api/v1/student/update-staff-sign
+  method: POST
+  sortNum: 300000
+  created: '2024-03-26T07:17:23.184Z'
+  modified: '2024-03-26T07:17:42.732Z'
+  headers: []
+  params: []
+  tests: []
+- _id: b4e5e8ff-8562-4133-85cb-9f6ab82aa17c
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 9b4ff644-ebd4-4576-ae94-154d3f66bc44
+  name: add-student
+  url: http://localhost:8000/api/v1/join-class/add-student
+  method: POST
+  sortNum: 320000
+  created: '2024-03-26T07:52:41.718Z'
+  modified: '2024-03-26T07:56:44.336Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: "{\n  \"student\":\"66027aec16c038100483cb46\",\n  \"classId\":\"6601cbe93f23f0edec86c7b1\"\n
+      \ \n}"
+    form: []
+  tests: []
+- _id: c26fed83-37ab-46d9-b2a4-ec7af1ce65a8
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 9b4ff644-ebd4-4576-ae94-154d3f66bc44
+  name: remove-student
+  url: http://localhost:8000/api/v1/join-class/remove-student
+  method: POST
+  sortNum: 330000
+  created: '2024-03-26T07:53:14.052Z'
+  modified: '2024-03-26T07:53:26.812Z'
+  headers: []
+  params: []
+  tests: []
+- _id: b0e76a3c-8c16-4105-973a-8d477f8cf949
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: a61aa13a-c090-494a-abae-353cacb11efe
+  name: create-fee-mode
+  url: http://localhost:8000/api/v1/fee-mode/create-fee-mode
+  method: POST
+  sortNum: 350000
+  created: '2024-04-11T15:38:01.182Z'
+  modified: '2024-04-13T05:31:33.849Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "name":"trenig",
+        "desc":"demo"
+      }
+    form: []
+  tests: []
+- _id: a56db4a2-9312-4d4a-b561-0ae395529d10
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 43362182-3e5a-4bcc-bd24-44f48c7719de
+  name: create-fee
+  url: http://localhost:8000/api/v1/fee/create-fee
+  method: POST
+  sortNum: 350000
+  created: '2024-04-13T08:46:11.744Z'
+  modified: '2024-04-13T08:50:46.580Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "name":"Admisson",
+        "desc":"demo",
+        "ammount": 527
+      }
+    form: []
+  tests: []
+- _id: 77563ddb-19a1-4189-828d-e54626892beb
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: a61aa13a-c090-494a-abae-353cacb11efe
+  name: update-fee-mode
+  url: http://localhost:8000/api/v1/fee-mode/update-fee-mode
+  method: PATCH
+  sortNum: 360000
+  created: '2024-04-13T05:34:05.324Z'
+  modified: '2024-04-13T06:01:01.919Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "feeModeId":"661a190f12e5a3023a97ef50",
+        "desc":"new tre demo 120"
+      }
+    form: []
+  tests: []
+- _id: 3f0e2cc7-984f-4dda-9b44-787576e97f17
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 43362182-3e5a-4bcc-bd24-44f48c7719de
+  name: update-fee
+  url: http://localhost:8000/api/v1/fee/update-fee
+  method: PATCH
+  sortNum: 360000
+  created: '2024-04-13T08:46:11.745Z'
+  modified: '2024-04-13T08:55:13.048Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "feeID":"661a484a32803af2ff697cb9",
+        "ammount":500
+      }
+    form: []
+  tests: []
+- _id: 0203bb1d-b72f-4fa4-a79e-734d97f98b65
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: a61aa13a-c090-494a-abae-353cacb11efe
+  name: remove-fee-mode
+  url: http://localhost:8000/api/v1/fee-mode/remove-fee-mode
+  method: POST
+  sortNum: 370000
+  created: '2024-04-13T06:02:16.239Z'
+  modified: '2024-04-13T07:33:26.302Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "feeModeId":"661a35348d19da31e9638837"
+      }
+    form: []
+  tests: []
+- _id: ba45cc8b-3baa-45ed-b23f-6082baa82a1b
+  colId: 7ed1f2dd-0e19-4cf5-84c3-2c97a3b416c3
+  containerId: 43362182-3e5a-4bcc-bd24-44f48c7719de
+  name: remove-fee
+  url: http://localhost:8000/api/v1/fee/remove-fee
+  method: POST
+  sortNum: 370000
+  created: '2024-04-13T08:46:11.746Z'
+  modified: '2024-04-13T08:54:24.091Z'
+  headers: []
+  params: []
+  body:
+    type: json
+    raw: |-
+      {
+        "feeID":"661a482932803af2ff697cb2"
+      }
+    form: []
+  tests: []

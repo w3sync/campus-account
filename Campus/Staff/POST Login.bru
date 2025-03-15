@@ -1,0 +1,18 @@
+meta {
+  name: POST Login
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{HOST}}/api/v1/staff/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "campus.ankan.kanaki",
+    "password": "Campus@1234"
+  }
+}
