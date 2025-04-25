@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
-import { PanelLeft } from "lucide-react"
+import { PanelLeftIcon } from "lucide-react"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
@@ -32,7 +32,7 @@ const SIDEBAR_WIDTH_MOBILE = "18rem"
 const SIDEBAR_WIDTH_ICON = "3rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
-type SidebarContext = {
+type SidebarContextProps = {
   state: "expanded" | "collapsed"
   open: boolean
   setOpen: (open: boolean) => void
@@ -42,7 +42,7 @@ type SidebarContext = {
   toggleSidebar: () => void
 }
 
-const SidebarContext = React.createContext<SidebarContext | null>(null)
+const SidebarContext = React.createContext<SidebarContextProps | null>(null)
 
 function useSidebar() {
   const context = React.useContext(SidebarContext)
@@ -113,7 +113,7 @@ function SidebarProvider({
   // This makes it easier to style the sidebar with Tailwind classes.
   const state = open ? "expanded" : "collapsed"
 
-  const contextValue = React.useMemo<SidebarContext>(
+  const contextValue = React.useMemo<SidebarContextProps>(
     () => ({
       state,
       open,
@@ -216,6 +216,7 @@ function Sidebar({
     >
       {/* This is what handles the sidebar gap on desktop */}
       <div
+        data-slot="sidebar-gap"
         className={cn(
           "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
           "group-data-[collapsible=offcanvas]:w-0",
@@ -226,6 +227,7 @@ function Sidebar({
         )}
       />
       <div
+        data-slot="sidebar-container"
         className={cn(
           "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex",
           side === "left"
@@ -241,6 +243,7 @@ function Sidebar({
       >
         <div
           data-sidebar="sidebar"
+          data-slot="sidebar-inner"
           className="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm"
         >
           {children}
@@ -263,16 +266,14 @@ function SidebarTrigger({
       data-slot="sidebar-trigger"
       variant="ghost"
       size="icon"
-      className={cn("h-7 w-7", className)}
+      className={cn("size-7", className)}
       onClick={(event) => {
         onClick?.(event)
         toggleSidebar()
       }}
       {...props}
     >
-      <PanelLeft
-        className="size-5"
-      />
+      <PanelLeftIcon />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )
@@ -568,7 +569,7 @@ function SidebarMenuAction({
         "peer-data-[size=lg]/menu-button:top-2.5",
         "group-data-[collapsible=icon]:hidden",
         showOnHover &&
-        "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
+          "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
         className
       )}
       {...props}

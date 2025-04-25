@@ -1,7 +1,9 @@
-import { SignIn } from "@/features/auth/components/sign-in";
+import Image from "next/image";
 
-export default function SignInPage() {
-    return (
-        <SignIn />
-    )
+export default function SignIn() {
+  return (
+    <div className="bg-red-500">
+      <h1>Sign in</h1>
+    </div>
+  );
 }
