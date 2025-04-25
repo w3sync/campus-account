@@ -18,7 +18,7 @@ const addressSchema = new Schema({
 const userSchema = new Schema({
     // Personal Details 
     firstName: { type: String, required: true, lowercase: true, trim: true, index: true },
-    midName: { type: String, lowercase: true, trim: true },
+    middleName: { type: String, lowercase: true, trim: true },
     lastName: { type: String, lowercase: true, trim: true },
     fatherName : {type:String,lowercase: true, trim: true , required:true},
     motherName : {type:String,lowercase: true, trim: true , required:true},

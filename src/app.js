@@ -6,7 +6,7 @@ const app = Express();
 
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN?.trim(),
     credentials: true
 }))
 app.use(Express.json({

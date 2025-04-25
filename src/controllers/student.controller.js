@@ -21,10 +21,10 @@ const genrateAccessAndRefereshToken = async (userId) => {
     } catch (err) {
         throw new ApiError(500, "Somthing went wrong while generating referesh and access token")
     }
-} 
+}
 
 
- const registerStudent = asyncHandler(async (req, res) => {
+const registerStudent = asyncHandler(async (req, res) => {
     // return res.status(200).json(new ApiResponse(200,req.body,"try"))
     // get all data of staff
     // check validation
@@ -37,10 +37,12 @@ const genrateAccessAndRefereshToken = async (userId) => {
     // remove ref token and password 
     // check for user creation
 
+    const parseData = JSON.parse(req.body.data);
+
     const {
         // Personal Details 
         firstName,
-        midName,
+        middleName,
         lastName,
         fatherName,
         motherName,
@@ -62,12 +64,13 @@ const genrateAccessAndRefereshToken = async (userId) => {
 
         //Student data 
         fromAnotherSchool,
-        previosAcedmicData,
+        previousAcademicData,
         tc,
         migration,
 
-    } = req.body;
+    } = parseData;
 
+    console.log("\n\n\n\n ======> ",parseData, "\t\n\n");
 
 
     // cloudinary work
@@ -95,7 +98,7 @@ const genrateAccessAndRefereshToken = async (userId) => {
         const student = await Student.create({
             // Personal Details 
             firstName,
-            midName: midName || "",
+            middleName: middleName || "",
             lastName: lastName || "",
             fatherName,
             motherName,
@@ -117,7 +120,7 @@ const genrateAccessAndRefereshToken = async (userId) => {
 
             // Student Data
             fromAnotherSchool,
-            previosAcedmicData,
+            previousAcademicData,
             tc,
             migration,
 
@@ -213,7 +216,7 @@ const refreshStudentAccessToken = asyncHandler(async (req, res) => {
         return res
             .status(200)
             .cookie("accessToken", accessToken, options)
-            .cookie("refreshToken", refreshToken,options)
+            .cookie("refreshToken", refreshToken, options)
             .json(new ApiResponse(200, { accessToken, refreshToken }, "AccessToken refreshed"))
 
     } catch (error) {
@@ -252,15 +255,15 @@ const updateStudentPhoto = asyncHandler(async (req, res) => {
     const photo = await uplodeOnCloudinary(studentPhotoLocalPath);
     if (!photo?.url) throw new ApiError(400, "error on uploding Image");
     const student = await Student.findById(req.student?._id).select("-password -refreshToken");
-    if(!student) throw new ApiError(500,"Error while finding student for update photo")
+    if (!student) throw new ApiError(500, "Error while finding student for update photo")
     await deleteOnCloudinaryByUrl(student.photo)
     student.photo = photo?.url;
-    
+
     const updatedStudent = await student.save()// await Student.findById(req.student?._id).select();
-    
+
     return res
-    .status(200)
-    .json(new ApiResponse(200,updatedStudent,"Photo uploded successfull"))
+        .status(200)
+        .json(new ApiResponse(200, updatedStudent, "Photo uploded successfull"))
 
 })
 
@@ -271,15 +274,15 @@ const updateStudentSign = asyncHandler(async (req, res) => {
     const sign = await uplodeOnCloudinary(studentSignLocalPath);
     if (!sign?.url) throw new ApiError(400, "error on uploding Image");
     const student = await Student.findById(req.student?._id).select("-password -refreshToken");
-    if(!student) throw new ApiError(500,"Error while finding student for update sign")
+    if (!student) throw new ApiError(500, "Error while finding student for update sign")
     await deleteOnCloudinaryByUrl(student.sign)
     student.sign = sign?.url;
-    
+
     const updatedStudent = await student.save()// await Student.findById(req.student?._id).select();
-    
+
     return res
-    .status(200)
-    .json(new ApiResponse(200,updatedStudent,"sign uploded successfull"))
+        .status(200)
+        .json(new ApiResponse(200, updatedStudent, "sign uploded successfull"))
 
 })
 

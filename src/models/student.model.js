@@ -8,20 +8,20 @@ import jwt from "jsonwebtoken"
 
 
 const tcSchema = new Schema({
-    schoolName: {type:String,required:true},
-    tcNumber : {type:String, required:true},
-    admissionNumber : {type:String},
-    date : {type:Date,required:true}
-},{_id:false})
+    schoolName: { type: String },
+    tcNumber: { type: String },
+    admissionNumber: { type: String },
+    date: { type: Date }
+}, { _id: false })
 
 
 const migrationSchema = new Schema({
-    schoolName: {type:String,required:true},
-    migrationNumber : {type:String, required:true},
-    rollNumber : {type:String},
-    date : {type:Date,required:true}
-},{_id:false})
- 
+    schoolName: { type: String },
+    migrationNumber: { type: String },
+    rollNumber: { type: String },
+    date: { type: Date }
+}, { _id: false })
+
 
 const studentSchema = userSchema.clone();
 
@@ -34,17 +34,41 @@ studentSchema.add({
     },
 
     // previos acedmic data 
-    fromAnotherSchool : {type:Boolean , required:true},
-    previosAcedmicData : {type:acadmicData, required: function(){return this.fromAnotherSchool}},
-    tc : {type:tcSchema,required:function(){return this.fromAnotherSchool}},
-    migration : {type:migrationSchema,required:function(){return this.fromAnotherSchool}},
+    fromAnotherSchool: { type: Boolean, required: true },
+    previosAcedmicData: { type: acadmicData, required: function () { return this.fromAnotherSchool } },
+    tc: {
+        type: tcSchema,
+        required: function () { return this.fromAnotherSchool },
+        validate: {
+            validator: function (value) {
+                if (this.fromAnotherSchool) {
+                    return value?.schoolName && value?.tcNumber && value?.date;
+                }
+                return true;
+            },
+            message: "TC details are required if student is from another school."
+        }
+    },
+    migration: {
+        type: migrationSchema,
+        required: function () { return this.fromAnotherSchool },
+        validate: {
+            validator: function (value) {
+                if (this.fromAnotherSchool) {
+                    return value?.schoolName && value?.migrationNumber && value?.date;
+                }
+                return true;
+            },
+            message: "Migration details are required if student is from another school."
+        }
+    },
 
 })
 
 
 
 studentSchema.pre('save', async function (next) {
-    if(! this.isNew) return next();
+    if (!this.isNew) return next();
     const lastStudent = await Student.findOne().sort({ admissionNumber: -1 });
     let newAdmissionNumber;
     if (!lastStudent) newAdmissionNumber = 1;
@@ -53,38 +77,38 @@ studentSchema.pre('save', async function (next) {
     next();
 })
 
-studentSchema.pre('save',async function(next){
-    if(!this.isModified("password")) return  next();
-    this.password = await bcrypt.hash(this.password,10);
+studentSchema.pre('save', async function (next) {
+    if (!this.isModified("password")) return next();
+    this.password = await bcrypt.hash(this.password, 10);
     next();
 })
 
 
-const checkUsername = async function(username){
-    const userExist = await Student.findOne({username:username},"username")
-    if(userExist) return false;
+const checkUsername = async function (username) {
+    const userExist = await Student.findOne({ username: username }, "username")
+    if (userExist) return false;
     return true;
 }
 
-const genrateUsername = async function(firstName,midName="",lastName=""){
-    if(!firstName) throw new ApiError(400,"First Name is required !!")
-    let num =1
-    let username = usernamePrifix.concat(".",firstName);
-    if(midName) username = username.concat(".",midName);
-    if(lastName) username = username.concat(".",lastName);
-    if(await checkUsername(username)) return username;
-    for(let i=0;i<5;i++){
-        let tempUsername = username.concat(".",num);
-        if(await checkUsername(tempUsername)) return tempUsername;
+const genrateUsername = async function (firstName, midName = "", lastName = "") {
+    if (!firstName) throw new ApiError(400, "First Name is required !!")
+    let num = 1
+    let username = usernamePrifix.concat(".", firstName);
+    if (midName) username = username.concat(".", midName);
+    if (lastName) username = username.concat(".", lastName);
+    if (await checkUsername(username)) return username;
+    for (let i = 0; i < 5; i++) {
+        let tempUsername = username.concat(".", num);
+        if (await checkUsername(tempUsername)) return tempUsername;
         num++;
     }
-    throw new ApiError(429,"Username Limite Accessed !!");
+    throw new ApiError(429, "Username Limite Accessed !!");
 }
 
-studentSchema.pre('save',async function(next){
-    if(! this.isModified("firstName")) return next();
-    this.username = await genrateUsername(this.firstName,this.midName,this.lastName);
-    console.log({"user":this.username})
+studentSchema.pre('save', async function (next) {
+    if (!this.isModified("firstName")) return next();
+    this.username = await genrateUsername(this.firstName, this.midName, this.lastName);
+    console.log({ "user": this.username })
     next();
 })
 
@@ -96,7 +120,7 @@ studentSchema.pre('save',async function(next){
 
 
 studentSchema.methods.isPasswordCorrect = async function (password) {
-    return await bcrypt.compare(password,this.password);
+    return await bcrypt.compare(password, this.password);
 }
 
 
@@ -105,20 +129,20 @@ studentSchema.methods.isPasswordCorrect = async function (password) {
 
 
 
-studentSchema.methods.genrateAccessToken = async function() {
+studentSchema.methods.genrateAccessToken = async function () {
     return await jwt.sign(
         {
             _id: this._id,
-            username : this.username,
-            email : this.email,
+            username: this.username,
+            email: this.email,
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn : process.env.ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }
-studentSchema.methods.genrateRefreshToken = async function() {
+studentSchema.methods.genrateRefreshToken = async function () {
 
     return await jwt.sign(
         {
@@ -126,7 +150,7 @@ studentSchema.methods.genrateRefreshToken = async function() {
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn : process.env.REFRESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }
